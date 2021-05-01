@@ -1,0 +1,107 @@
+.big-backgroundcoin{
+  
+    background-image: url("54767.jpg") ;  
+ 
+    background-size: cover;
+    font-family: 'Mali', cursive;
+    /* z-index: 20; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: rgb(231, 150, 150);
+    font-size: 35px;
+}
+
+
+
+.backgroundcoin{
+    
+    width: 33%;
+    height: 100%;
+
+    margin-top: 60px;
+    display: grid;
+    grid-gap: 1rem;
+    box-shadow: 0px 7px 7px 4px rgba(206, 206, 206, 0.74);
+    justify-items: center;
+    background-color: rgba(255, 255, 255, 0.932);
+    border-radius: 20px;
+}
+
+.product__item .row {
+    padding-bottom: 0px;
+    padding-right: 0;
+    padding-left: 0px;
+}
+.money{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+.product__item{
+
+    padding-bottom: 10px;
+}
+.racarcoin{
+    padding-top: 30px;
+}
+.product__item .btn {
+    background-color:rgba(110, 76, 26, 0.925);
+    border-radius: 30px;
+}
+
+.product__item .btn:hover {
+    background-color:rgba(172, 122, 48, 0.925);
+    border-radius: 30px;
+    color: rgb(230, 220, 139);
+}
+.money .addcoinnn{
+    font-size: 20px;
+   
+
+}
+.coinofme{
+margin-bottom: 30px;
+width: 50%;
+padding: 5px;
+border-radius: 20px;
+background-color: rgba(224, 219, 219, 0.397);
+}
+@media only screen and (max-width: 1024px) {
+
+
+.backgroundcoin {
+    width: 60%;
+    height: 100%;
+    margin-top: 60px;
+    display: grid;
+    grid-gap: 1rem;
+    box-shadow: 0px 7px 7px 4px rgb(206 206 206 / 74%);
+    justify-items: center;
+    background-color: rgba(255, 255, 255, 0.911);
+    border-radius: 20px;
+}
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .backgroundcoin {
+        width: 100%;
+        height: 100%;
+        margin-top: 60px;
+        display: grid;
+        grid-gap: 1rem;
+        box-shadow: 0px 7px 7px 4px rgb(206 206 206 / 74%);
+        justify-items: center;
+        background-color: rgba(255, 255, 255, 0.911);
+        border-radius: 20px;
+    }
+    .coinofme {
+        margin-bottom: 30px;
+        width: 60%;
+        padding: 5px;
+        border-radius: 20px;
+        background-color: rgba(224, 219, 219, 0.397);
+    }
+    }

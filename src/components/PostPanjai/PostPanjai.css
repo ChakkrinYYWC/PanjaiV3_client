@@ -1,0 +1,38 @@
+.slide-show .ss-arrows{
+
+        position: absolute;
+        width: 300px;
+        transform: translateY(-500%);
+        display: none;
+        /* right: 500px; */
+        margin: 50px;
+        top: 300px;
+        
+}
+span.ss-active{
+        background-color: #b86436 !important;
+        border-color: black !important;
+        
+}
+.reportpost-button .btn {
+        background-color: rgb(221, 192, 133);
+        color: aliceblue;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        left: 20px;
+}
+
+.reportpost-button1 {
+        font-size: 14px;
+        text-align: center;
+        font-family: Mali;
+        color: rgb(104, 73, 12);
+}
+.reportpost-button .dropdown-toggle:empty::after {
+        
+        position: relative;
+        left: -5px;
+        top: -6px;
+    }
+

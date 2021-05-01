@@ -1,0 +1,280 @@
+.dek {
+  
+    /* background-attachment: fixed;  */
+    /* background-image: url("./dek.png") ; */
+    background-position: center; 
+    background-size: cover;
+    width: 100%;
+    font-family: 'Mali', cursive;
+    /* height: 400px; */
+    position: absolute;
+    /* z-index: 20; */
+
+  
+}
+
+.btcate{
+  padding: 20px 0 0px 0px;
+
+}
+
+
+
+.dek p {
+  margin: 0px;
+  padding: 0px;
+} 
+
+.box-white{
+    background-color: rgba(255, 255, 255, 0.89);
+    margin: 340px 120px 100px 120px;
+    box-shadow: 0px 7px 7px 4px rgba(206, 206, 206, 0.397);
+    justify-items: center;
+
+
+}
+
+.Title{
+    padding-top: 50px;
+    font-size: 25px;
+    font-weight: bolder;
+    color:rgba(77, 50, 9, 0.925);
+    text-align: center;
+  }
+
+  .Title .fab{
+      font-size: 26px;
+      color: rgb(212, 167, 134);
+      margin: 10px;
+  }
+
+  .foundation{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    
+  }
+
+  
+.foundat{
+    width: 360px;
+    height: 85%;
+    text-align: center;
+    border-radius:40px;
+    box-shadow: 1px 1px 1px 0px rgba(2, 1, 1, 0.555);
+    margin: 40px;
+  }
+
+  .foundat Img{
+    height: 185px;
+    width:100%;
+    border-radius:30px 30px 0  0;
+  }
+  
+
+
+  .foundation .row{
+    padding: 30px 90px 60px 10px;
+ 
+  }
+
+  .Tfound{
+      font-size: 16px;
+      color:rgba(41, 27, 27, 0.664);
+      font-weight: bold;
+      text-align:right;
+      text-decoration-line: none;
+
+  }
+
+  .Tfound:hover{
+    color:rgba(41, 27, 27, 0.863);
+    
+  }
+
+
+  .dek .card-body{
+      background-color: #e4d38580;
+      border-radius: 0 0 30px 30px;
+  }
+
+  .foundat .CardTitle{
+    text-decoration-line: none;
+    font-size: 13px;
+    color:rgba(253, 253, 253, 0.925);
+    background-color: rgba(161, 128, 79, 0.925) ;
+    border-radius: 6px;
+    padding: 3px;
+
+
+  }
+ 
+  .foundat .CardTitle:hover{
+    font-size: 13.5px;
+    text-decoration-line: underline;
+  }
+
+  .information,.information-1{
+    text-align: left;
+    color: rgb(82, 82, 82);
+    margin-top: 1px;
+    padding: 2px 0 2px 0;
+    font-size: 15px;
+}
+
+  /* .information .information-1{
+    margin-top: 1px;
+    padding: 2px 0 2px 0;
+    font-size: 15px;
+  } */
+
+  .information-1{
+    margin-bottom: 10px
+
+  }
+  .btcate .MuiButton-root {
+    color: rgb(94, 57, 10);
+    padding: 6px 16px;
+    font-size: 1rem;
+    font-family: 'Mali', cursive;
+  }
+
+ 
+  .image01 img {
+    height: 90%;
+    width: 100%;
+    justify-items: center;
+   
+}
+
+  /*responsive*/
+@media only screen and (max-width: 1024px) {
+  .box-white{
+    margin: 250px 20px 100px 20px;
+ 
+  }
+  .Title{
+    padding-top: 15px;
+    font-size: 18px;
+    }
+
+    .foundat{
+      width:280px;
+      height: 340px;
+      margin-bottom: 0px;
+    }
+    .foundat Img{
+      height: 140px;
+  
+    }
+    .foundation .row{
+      padding: 0px 100px 50px 0px;
+      
+  
+    } 
+    .Tfound{
+      font-size: 12px;
+    }
+    .information,.information-1{
+      margin-top: 0px;
+      padding: 0px;
+      font-size: 12px;
+    }
+    .foundat .CardTitle{
+      font-size: 10px;
+    }
+    .information-1{
+      margin-bottom: 0px
+  
+    }
+    .imgslide .ss-images-track {
+      height: 260px;
+      
+  }
+  .imgslide .slide-show {
+    width: 200px;
+}
+/* .slide-show .ss-images-size {
+  width: 280px;
+}
+.slide-show .ss-images-size {
+  width: 280px;
+}
+     */
+}
+@media only screen and (max-width: 768px) {
+  
+  .dek{
+    width: 100%;
+    height: 180px;
+  }
+
+  .box-white{
+    margin: 120px 15px 100px 15px;
+
+  }
+
+  .Title{
+    padding-top: 15px;
+    font-size: 18px;
+    }
+
+  .Title .fab{
+    font-size: 20px;
+  }
+
+  .foundat{
+    width:240px;
+    height: 290px;
+    margin-bottom: 0px;
+  }
+
+
+  .foundat Img{
+    height: 100px;
+
+  }
+
+  .foundation .row{
+    padding: 0px 0px 0px 0px;
+    
+
+  } 
+  
+  .Tfound{
+    font-size: 12px;
+  }
+  .information,.information-1{
+    margin-top: 1px;
+    padding: 0px;
+    font-size: 12px;
+  }
+  .card-body {
+    flex: 1 1 auto;
+    padding: 0.5rem 1rem;
+
+  }
+  .foundat .CardTitle{
+    font-size: 10px;
+  }
+  .information-1{
+    margin-bottom: 0px
+
+  }
+
+
+  .btcate {
+    padding: 10px 0px;
+}
+
+.btcate .MuiButton-root {
+  color: rgba(99, 61, 11, 0.87);
+  padding: 0px 0px;
+  font-size: 0.5rem;
+
+
+}
+.imgslide .ss-images-track {
+  height: 140px;
+}
+}    

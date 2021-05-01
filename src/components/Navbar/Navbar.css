@@ -1,0 +1,265 @@
+.carousel {
+    z-index: 1 !important; 
+}
+.NavbarItems {
+    background: rgba(161, 128, 79, 0.925) ;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 120px 1fr 50px 50px 150px ;
+    padding:  0 25px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Mali', cursive;
+    text-align: center;
+    text-shadow: 2px 2px 4px  rgba(214, 176, 119, 0.925);
+    z-index: 20 !important;
+    /* text-shadow: 2px 2px 4px  rgba(187, 130, 44, 0.925);
+    */
+}
+.noti,.search {
+    text-align: center;
+}
+.navbar-logo{
+    font-size: 30px;
+    color: white;
+    justify-content: start;
+    cursor: pointer;
+    font-family: 'Mali', cursive;
+    text-shadow: 3px 3px 4px rgba(43, 28, 7, 0.925);
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.navbar-logo:hover{
+    text-decoration: none;
+    color: rgb(70, 7, 7);
+    text-shadow: 3px 3px 4px rgba(226, 224, 220, 0.925);
+
+}
+
+.nav-menu {
+    padding: 20px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(7,auto);
+    /* grid-gap:30px; */
+    list-style: none;
+    text-align: center;
+}
+
+.nav-links,.dropdown,.nav-links-mobile{
+    color: white;
+    text-decoration: none;
+    padding: 0.2rem 0.9rem;
+
+}
+.nav-links-mobile{
+    background-color:rgba(110, 76, 26, 0.925);
+    border-radius: 15px;
+    
+    
+}
+a.nav-links-mobile {
+    order: 1;
+    column-span: 2;
+}
+.nav-links:hover{
+    background-color: rgba(110, 76, 26, 0.925);
+    border-radius: 15px;
+    
+    color: white;
+   
+
+}
+.nav-links-mobile:hover{
+    background-color:rgba(110, 76, 26, 0.925);
+    border-radius: 6px;
+   
+    color: white;
+    transition: all 0.2s ease-out;
+}
+
+.fa-bars{
+    color: white;
+}
+
+
+
+.menu-icon{
+    display: none;
+}
+.dropdown,.bell {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+.dropdown-menu{
+    font-size: 10px;
+    width: 20px;
+    padding: 0rem 0rem;
+
+}
+.hidden{
+    display: none;
+}
+
+.ssearch{
+    color: rgb(255, 255, 255);
+
+}
+.ssearch:hover{
+    color: rgb(88, 70, 10);
+    text-shadow: 3px 3px 4px rgb(255, 203, 100);
+
+}
+
+.bell:hover{
+    color: rgb(88, 70, 10);
+    text-shadow: 3px 3px 4px rgb(255, 203, 100);
+
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    border-radius: 50px;
+    padding: 2.5px 6px 2.5px 6px;
+    vertical-align: top;
+
+  }
+ @media screen and (max-width: 1024px) {
+    .NavbarItems {
+        /* position: relative; */
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        padding: 0;
+   
+    }
+
+    .user-myphoto {
+        display: none !important;
+    }
+
+
+    .position-search{
+        position: relative;
+        left: 790px;
+        
+    }
+    .noti{
+        position: relative;
+        left: 670px;
+      
+    }
+
+
+    .nav-menu,.nav-links-mobile{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        top:60px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        margin-top: 20px;
+
+    }
+    .carousel {
+        z-index: 1;
+    }
+    
+    .nav-menu.active{
+       background:  rgba(161, 128, 79, 0.925) ;
+        padding: 1.2rem;
+        display: table;
+        width: 100%; 
+        z-index: 10;
+    }
+    .nav-links-mobile{
+        display:none;
+      
+    }
+    .hidden{
+        display:inline-block;
+        color: white;
+       
+        border-radius: 10px;
+    
+    }
+    .hidden:hover{
+        color: white;
+        background-color:rgba(85, 52, 4, 0.925);
+        border-radius: 10px;
+        
+        transition: all 0.2s ease-out;
+    }
+    .nav-links:hover{
+        background-color: rgba(85, 52, 4, 0.925);
+        border-radius: 15px;
+        width: 200px;
+        color: white;
+    
+    }
+
+    .navbar-logo{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        
+    }
+
+    .menu-icon{
+        display: block;
+        position: absolute;
+        top: 2px;
+        right: 0px;
+        transform: translate(-100%, 60%);
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .fa-times{
+        color: white;
+        font-size: 1.7rem;
+      
+
+    
+    }
+
+    li.itemlist{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+   
+
+}
+ @media screen and (max-width: 768px) {
+    .NavbarItems {
+        /* position: relative; */
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        padding: 0;
+   
+    }
+
+    .user-myphoto {
+        display: none !important;
+    }
+
+
+    .position-search{
+        position: relative;
+        left: 220px;
+        
+    }
+    .noti{
+        position: relative;
+        left: 200px;
+      
+    }
+   
+
+ }
+ 

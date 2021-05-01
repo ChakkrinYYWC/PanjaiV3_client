@@ -1,0 +1,51 @@
+.NotiPanel{
+    width: 500px;
+    height: auto;
+    font-family: 'Mali', cursive;
+    
+}
+
+.boxNoti{
+    width: 250px;
+    height: auto;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.boxtext{
+    padding: 10px 15px;
+    background-color: rgba(93, 73, 44, 0.925);
+    color: aliceblue;
+    border-bottom: black;
+}
+
+/* .NameKamko{
+    width: 230px;
+    height: auto;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px 15px;
+    
+    
+} */
+.boxtext1{
+    padding: 10px 15px;
+    background-color: rgba(124, 99, 61, 0.925);
+    color: aliceblue;
+}
+.fa-check-circle{
+    color: green;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.fa-times-circle{
+    color: red;
+    font-size: 20px;
+    margin-left: 6px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 150px 90px;
+    padding: 10px 5px;
+    
+}

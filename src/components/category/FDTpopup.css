@@ -1,0 +1,14 @@
+.dek{
+    background-image: url("pan.jpg");
+    position: absolute;
+    width: 100%;
+
+    text-align: center; 
+    font-family: 'Mali', cursive;
+    justify-items: center;
+}
+
+.bgbg .box-white{
+    margin: 120px 100px 100px 120px;
+    
+}

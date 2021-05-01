@@ -1,0 +1,300 @@
+.postfdt {
+
+    background-attachment: fixed;    
+    background-image: url("bg7.png") ;  
+    background-position: center; 
+    /* background-size: cover; */
+    font-family: 'Mali', cursive;
+    /* z-index: 20; */
+    position: absolute;
+    width: 100%;
+}
+
+
+.image01 img {
+    height: 100%;
+    width: 50%;
+    justify-items: center;
+    border-radius: 70px ;
+}
+.image01 img:hover {
+    height: 100%;
+    width: 52%;
+
+}
+.Tt{
+    font-weight: bold;
+    font-size: 25px;
+    color: rgba(109, 70, 12, 0.925);
+    font-family: 'Chonburi', cursive;
+  
+    text-align: center;
+    padding: 80px;
+    text-shadow: 10px 10px  1px rgba(216, 206, 193, 0.925);
+}
+
+.box-box{
+    background-color: rgba(255, 255, 255, 0.938);
+    margin: 100px 150px 50px 150px;
+    box-shadow: 0px 7px 7px 4px rgba(32, 32, 32, 0.397);
+    justify-items: center; 
+
+}
+
+.bx{
+    background-color : rgba(201, 152, 83, 0.993);
+    margin: 20px 400px 50px 400px;
+    padding: 15px 0 25px 0px;
+    box-shadow: 0px 7px 7px 4px rgba(32, 32, 32, 0.397);
+    justify-items: center; 
+    text-align: center;  
+    border: 10px solid rgb(252, 238, 224);
+    border-radius: 40px;
+    /* width: 80%; */
+}
+
+.box-box .Title {
+      padding: 80px 0 80px 0;
+      font-size: 25px;
+      font-weight: bolder;
+      color:rgba(77, 50, 9, 0.925);
+      text-align: center;
+    
+    }
+
+.info{
+    text-align: center;
+    padding: 70px 150px 60px 150px;
+    font-size: 20px;
+
+}
+
+.infor{
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(253, 253, 253);
+}
+
+ .box-box Button {
+    background-color:rgba(143, 105, 1, 0.925);
+    color: white;
+    font-family: 'Mali', cursive;
+    margin: 0px 0px 60px 0px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 17px;
+} 
+
+
+.map Button{
+    background-color:rgba(136, 28, 28, 0.925);
+    color: white;
+    border-radius: 30px;
+    float: right; 
+    margin: 0px 250px 0px 0px;
+    padding: 0px;
+}
+
+
+.box-box .botton {
+ 
+    color: white;
+    /* margin: 0px 620px 30px 570px; */
+    font-family: 'Mali', cursive;
+    float: right; 
+    margin: 10px 7px 0px 0px  ;
+    background-color:  rgba(161, 128, 79, 0.925) ;
+}
+
+
+.box-box Button:hover{
+    color: rgb(253, 253, 253);
+    background-color:rgb(172, 98, 15);
+    border-radius: 15px;
+    font-size: 16px;
+    transition: all 0.2s ease-out;
+    text-decoration-line: underline;
+
+}
+
+.logo{
+    font-size: 30px;
+    color: rgb(250, 249, 249);
+    text-align: center;
+    margin-bottom: 15px;
+
+    
+}
+
+.pagemap{
+    width: 500px;
+    height: 100%;
+    font-family: 'Mali', cursive;
+}
+.ap{
+    width: 100%;
+
+}
+.imageslide .slide-show .ss-thumbnails {
+    width: 920px;
+}
+.totaldonate{
+    margin-bottom: 50px;
+    width: 30%;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: rgb(146, 89, 4);
+    background-color: rgba(224, 219, 219, 0.397);
+}
+
+.popupdonate{
+    width: 500px;
+    height: 100%;
+    font-family: 'Mali', cursive;
+}
+.popupdonate .namefdt{
+ padding-top: 20px;
+ font-family: 'Mali', cursive;
+}
+
+@media only screen and (max-width: 1024px) {
+    .box-box {
+        margin: 150px 50px 270px 50px;
+    }
+  
+    .info {
+        text-align: center;
+        padding: 50px 40px 50px 40px;
+        font-size: 17px;
+    }
+    .bx {
+        margin: 0px 0px 20px 220px;
+        padding: 5px 0 10px 0px;
+        justify-items: center;
+        text-align: center;
+        width: 50%;
+        float: center;
+       
+
+    }
+    .Tt {
+        font-size: 20px;
+        padding: 50px 10px 50px 10px;
+    }
+    .image01 img {
+        width: 80%;
+
+    }
+    .infor{
+        font-size: 15px;
+
+        font-weight: normal;
+       
+    
+    }
+    .box-box Button {
+        margin: 0px 0px 30px 0px;
+    } 
+    .map Button{
+        margin: 0px 100px 0px 0px;
+    }
+    .box-box .botton {
+        margin: 10px 5px 0px 0px  ;
+    }
+    .logo{
+        font-size: 20px;
+        margin-bottom: 10px;
+        
+    }
+  
+}
+
+
+@media only screen and (max-width: 768px) {
+    .box-box {
+        margin: 40px 0px 45px 0px;
+        width: 100%;
+    }
+    .Tt {
+        padding: 60px;
+    }
+    .info {
+        text-align: center;
+        padding: 50px 30px 50px 30px;
+        font-size: 15px;
+    }
+    .bx {
+        margin: 0px 0px 20px 90px;
+        padding: 5px 0 10px 0px;
+        justify-items: center;
+        text-align: center;
+        width: 50%;
+        float: center;
+
+    }
+    .Tt {
+        font-size: 16px;
+        padding: 40px 10px 30px 10px;
+    }
+    .image01 img {
+        width: 80%;
+
+    }
+    .infor{
+        font-size: 10px;
+
+        font-weight: normal;
+       
+    
+    }
+    .box-box Button {
+        margin: 0px 0px 30px 0px;
+        font-size: 14px;
+    } 
+
+
+    .map Button{
+        margin: 0px 50px 0px 0px;
+    }
+    .box-box .botton {
+        margin: 10px 5px 0px 0px  ;
+    }
+    .logo{
+        font-size: 20px;
+        margin-bottom: 10px;
+        
+    }
+    .pagemap {
+        width: 300px;
+        height: 100%;
+        font-family: 'Mali', cursive;
+        padding: 0px;
+    }
+    .pagemap .MuiDialogContent-root {
+        flex: 1 1 auto;
+        padding: 0px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pagemap  .MuiTypography-h6 {
+        font-size: 0.9rem;
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: 500;
+        line-height: 1.6;
+        letter-spacing: 0.0075em;
+    }
+    .totaldonate{
+        margin-bottom: 50px;
+        width: 70%;
+        padding: 5px;
+        font-size: 18px;
+        border-radius: 20px;
+        font-weight: bold;
+        color: rgb(146, 89, 4);
+        background-color: rgba(224, 219, 219, 0.397);
+    }
+}

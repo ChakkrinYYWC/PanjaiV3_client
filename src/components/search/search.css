@@ -1,0 +1,325 @@
+.search-bar{
+    padding: 5% 3% 5% 3%;
+    /* font-family: 'Mali', cursive; */
+}
+
+.ui-input{
+    width: 50%;
+    height: auto;
+    margin-right: 2%;
+    font-size: 15pt;
+}
+
+.search-bt{
+    background-color: rgb(151, 117, 49);
+    font-size: 18pt;
+    height: 40px;
+    width: 90px;
+    font-family: 'Mali', cursive;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+.search-bt:hover{
+    background-color: rgb(95, 74, 32);
+    font-size: 20px;
+}
+/* .check1{
+    margin-right:200px;
+  
+}
+.check2{
+    margin-right: 200px;
+} */
+/* .check3{
+  
+} */
+
+
+/* .check1 h2 {
+    font-size: 25px;
+    margin: 0px; 
+    text-align: center;
+    font-family: 'Mali', cursive;
+    font-weight: bold;
+    color: rgb(151, 114, 85);
+    
+} */
+
+/* .check2 h2 {
+    font-size: 25px;
+    margin: 0px; 
+    text-align: center;
+    font-family: 'Mali', cursive;
+    font-weight: bold;
+    color: rgb(151, 114, 85);
+    
+} */
+.check3 {
+  font-size: 25px;
+  padding-left: 70% ;  
+
+  margin: 0px;
+  font-family: 'Mali', cursive;
+  font-weight: bold;
+  /* color: rgb(151, 114, 85); */
+}
+/* .MuiIconButton-label {
+  margin-left: 500px;
+} */
+/* .box1{
+    zoom: 140%;
+}
+
+.box2{
+    zoom: 140%;
+
+} */
+.box3{
+  zoom: 140%;
+
+}
+
+.want{
+  background-color: rgba(187, 130, 44, 0.925);
+  font-family : 'mali';
+  border-radius: 50px;
+  color: #fff;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;  
+  border: 0;
+}
+
+
+.want:hover {
+  background-color: rgba(85, 52, 4, 0.925);
+  color: #fff;
+
+}
+ 
+.fav{
+  background-color: #a13800;
+  font-family : 'mali';
+  border-radius: 50px;
+  color: #fff;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;  
+  border: 0;
+  
+}
+
+.fav:hover {
+  background-color:  rgba(85, 52, 4, 0.925); /* Green */
+  color: white;
+}
+
+.head {
+    margin-top:2%;
+}
+
+
+
+
+.dek {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    font-family: 'Mali', cursive;
+    height: 400px;
+    position: absolute;
+ 
+}
+
+
+
+.dek p {
+  margin: 0px;
+  padding: 0px;
+} 
+/* 
+.box-white{
+    background-color: rgba(255, 255, 255, 0.89);
+    margin: 340px 120px 500px 120px;
+    box-shadow: 0px 7px 7px 4px rgba(206, 206, 206, 0.397);
+    justify-items: center;
+
+  
+
+} */
+
+.Title{
+  padding-top: 80px;
+  
+    font-size: 25px;
+    font-weight: bolder;
+    color:rgba(77, 50, 9, 0.925);
+    text-align: center;
+  
+  }
+
+  .Title .fab{
+      font-size: 26px;
+      color: rgb(212, 167, 134);
+      margin: 10px;
+  }
+
+  .foundation{
+    height: 60%;
+    width: 100%;
+    margin: 0;
+    
+  
+  }
+  
+
+  
+.foundat{
+    width: 355px;
+    height: 350px;
+    text-align: center;
+    border-radius:40px;
+    
+    box-shadow: 1px 1px 1px 0px rgba(2, 1, 1, 0.555);
+    margin: 40px;
+  }
+
+  .foundat Img{
+    height: 180px;
+    width:100%;
+    border-radius:30px 30px 0  0;
+ 
+
+
+  }
+
+  .Tfound{
+      font-size: 16px;
+      color:rgba(41, 27, 27, 0.664);
+      font-weight: bold;
+      text-align:right;
+      text-decoration-line: none;
+
+  }
+
+  .Tfound:hover{
+    color:rgba(41, 27, 27, 0.863);
+    
+  }
+
+
+  .dek .card-body{
+      background-color: #e4d38580;
+      border-radius: 0 0 30px 30px;
+  }
+
+  .foundat .CardTitle{
+    text-decoration-line: none;
+    font-size: 13px;
+    color:rgba(253, 253, 253, 0.925);
+    background-color: rgba(161, 128, 79, 0.925) ;
+    border-radius: 6px;
+    padding: 3px;
+
+
+  }
+ 
+  .foundat .CardTitle:hover{
+    font-size: 13.5px;
+    text-decoration-line: underline;
+  }
+
+  .information,.information-1{
+    text-align: left;
+    color: rgb(82, 82, 82);
+    margin-top: 1px;
+    padding: 2px 0 2px 0;
+    font-size: 15px;
+}
+
+
+  .information-1{
+    margin-bottom: 10px
+
+  }
+  
+
+.bg2{
+    /* padding: 0% 5% 0% 15%; */
+      /* background-color: rgb(235, 198, 77); */
+    font-family: 'Mali', cursive;
+     
+}
+
+.head{
+    background-color: white;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    
+    
+  
+}
+
+.bg2 .row {
+    padding: 0% 10% 0% 12%;
+    /* padding-bottom: 50px;
+    padding-right: 100px;
+    padding-left: 100px; */
+}
+
+.ui-input:hover {
+    -webkit-box-shadow: 10px 10px 5px -5px rgba(221,219,219,1);
+    -moz-box-shadow: 10px 10px 5px -5px rgba(221,219,219,1);
+    box-shadow: 10px 10px 5px -5px rgba(221,219,219,1);
+}
+
+.pum Button {
+    padding: 2.5px 3px;
+    font-size: 0.8125rem;
+    margin: 0px 7px 0 0;
+}
+.background-search {
+  background-color:  rgb(226, 221, 204);
+  position: absolute;
+    width: 100%;
+    height: 100%;
+  
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+
+  .bg2 .row {
+    padding: 0% 10% 0% 2%;
+}
+
+
+
+}
+
+@media only screen and (max-width: 768px) {
+  .col-4 {
+    flex: 0 0 auto;
+    width: 100%;
+    padding-left: 7%;
+}
+
+  .bg2 .row {
+    padding: 0%;
+}
+
+
+
+
+
+}

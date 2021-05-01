@@ -1,0 +1,40 @@
+.footer {
+    /* height: 40px; */
+    width: 100%;
+    margin-top: 100px;
+    background-color: rgba(168, 136, 89, 0.849) ;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Mali', cursive;
+    /* padding-top:5px; */
+    padding-bottom: 0px;
+    /* position: static; */
+    bottom: 0;
+    position: fixed;
+    position:fixed;
+   left:0px;
+
+  }
+
+
+.textfooter{
+    font-size: 18px;
+    color: white;
+    font-family: 'Mali', cursive;
+
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+.textfooter:hover{
+    text-decoration: none;
+    color: rgb(70, 7, 7);
+    text-shadow: 3px 3px 4px rgba(226, 224, 220, 0.925);
+
+}
+.logofooter{
+    font-size: 18px;
+  
+}

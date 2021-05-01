@@ -1,0 +1,74 @@
+.ggmap{
+    margin: 0%;
+}
+
+
+.foundation_dew{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    
+  }
+
+.foundation_dew .row{
+    /* padding: 30px 90px 60px 10px; */
+    padding-bottom: 50px;
+    padding-right: 300px;
+    padding-left: 280px;
+ 
+  }
+
+
+
+  
+
+.hh{
+    padding-top: 50px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(141, 90, 18, 0.925)
+}
+
+
+.bta h1{
+    width:100%;
+    font-weight: bold;
+/*     background-color: bisque; */
+    margin-bottom: 0%;
+    padding-bottom: 0%;
+}
+
+.space{
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+}
+
+@media only screen and (max-width: 1024px){
+    .foundation_dew .row{
+        padding: 0px 100px 30px 20px;
+        
+    
+      }
+
+
+
+}
+    
+
+
+@media only screen and (max-width: 768px){
+.hh{
+    padding-top: 40px;
+    font-size: 20px;
+}
+
+.foundation_dew .row{
+    padding: 0px 0px 0px 15px;
+    
+
+  } 
+
+
+}
+

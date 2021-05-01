@@ -1,0 +1,86 @@
+.bg{
+    background-color:  rgba(241,203,107,0.48);
+  
+  }
+
+  
+  .head{
+    text-align: center;
+    
+  }
+
+  .head-h2 {
+    text-align: center;
+    margin: 0%;
+    padding: 1% 0% 2% 0%;
+    color: rgb(107,60,25);
+    
+  }
+  
+  .head-h4{
+    text-align: center;
+   
+  }
+  .text{
+    padding: 0px 5% 0px 5%;
+    font-family: 'Mali', cursive;
+ 
+   
+  
+  }
+  
+  .text-t{
+    padding: 3% 3% 50px 3%;
+    background-color: rgba(168,137,92,0.75);
+    color: white;
+   
+  }
+  
+  .button-donate{
+    text-align: center;
+    padding: 10% 10% 10% 10%;
+    background-color:rgba(187, 130, 44, 0.925);
+    color: white;
+    width: 100px;
+    font-family: 'Mali', cursive;
+    padding: 10px 8px;
+
+    
+  }
+
+  .button-donate-div{ 
+    padding: 2% 10% 10% 10%;
+
+  }
+  
+  .button-address{
+    
+    text-align:center  ;
+    float: right;
+    width: 5%;
+    height: 4%;
+    background-color:rgba(187, 130, 44, 0.925);
+    color: white;
+    font-family: 'Mali', cursive;
+
+    
+  }
+
+.button-address:hover{
+    text-align: center ;
+    background-color:rgba(85, 52, 4, 0.925);
+}
+
+.button-donate:hover{
+  background-color:rgba(85, 52, 4, 0.925);
+}
+  
+  .mid{
+   
+    text-align: center;
+  }
+  
+  .app{
+    font-family: 'Mali', cursive;
+  
+  }
