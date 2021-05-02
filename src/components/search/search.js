@@ -130,7 +130,7 @@ export default function Checkboxes() {
     }
   });
 
-
+  const currentUser = localStorage.getItem("currentUser");
   // console.log(postTPJ)
   console.log(postFDT)
 
@@ -277,14 +277,48 @@ export default function Checkboxes() {
                       <div className="information">ผู้สร้าง :{record.creator}</div>
                       <div className="information-1">วันที่ลง :{record.Timestamp}</div>
                       <div className="pum">
+                      <If condition={currentUser == record.creator}>
+                      <Then>
                         <button
                           variant="contained"
                           // color="primary"
                           size="small"
                           className="want" // จำเป็น
                         >
+                          แก้ไข
+                        </button>
+
+                        <button
+                          variant="contained"
+                          // color="secondary"
+                          size="small"
+                          className="fav"
+                        >
+                          ลบ
+                       </button>
+                       </Then>
+
+                       <ElseIf condition={currentUser == "admin"}>
+                        <button
+                          variant="contained"
+                          // color="secondary"
+                          size="small"
+                          className="fav"
+                        >
+                          ลบ
+                       </button>
+                       </ElseIf>
+
+                       <Else condition={currentUser == "admin"}>
+                       <button
+                          variant="contained"
+                          // color="primary"
+                          size="small"
+                          className="want" // จำเป็น
+                        >
                           ขอรับ
-                </button>
+                        </button>
+
                         <button
                           variant="contained"
                           // color="secondary"
@@ -292,7 +326,10 @@ export default function Checkboxes() {
                           className="fav"
                         >
                           ถูกใจ
-                </button>
+                       </button>
+                       </Else>
+                       </If>
+
                       </div>
                     </Card.Body>
                   </Card>
