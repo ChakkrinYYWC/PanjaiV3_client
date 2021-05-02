@@ -102,37 +102,45 @@ class tutorial extends Component {
             </div>
             
         </div>
-         {/* บริจาคสิ่งของมูลนิธิ */}
+         {/* ตู้ปันใจ */}
          <div className="topic-tutorial-1">
-            <p>2. วิธีการบริจาคสิ่งของและเงินให้กับมูลนิธิต่าง ๆ </p>
+            <p>4. วิธีการบริจาคสิ่งของและรับของบริจาคผ่านตู้ปันใจ </p>
           </div>
           <div class="grid-container-tutorial">
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-1.png" />
-              <p>1.กดบริจาคสิ่งของ</p>
+              <img className="pic-tutorial" src="/tutorial3-1.png" />
+              <p>1.กดหน้าตู้ปันใจ <br />
+              และสามารถโพสต์สิ่งของที่ต้องการบริจาค</p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-2.png" />
-              <p>2. เลือกหมวดหมู่ที่ต้องการบริจาค</p>
-            </div>
-            <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-3.png" />
-              <p>3. เลือกมูลนิธิที่ต้องการบริจาค</p>
-            </div>
-            <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-4.png" />
-              <p>
-                4.รายละเอียดของมูลนิธิ <br />
-                และมีแผนที่ดูที่ตั้งของมูลนิธิ
+              <img className="pic-tutorial" src="/tutorial3-2.png" />
+              <p>2. เลือกดูสิ่งของที่บริจาค<br />
+                สามารถกดถูกใจและขอรับของได้<br />
+                สามารถกดแก้ไขและลบโพสต์ที่เจ้าของโพสต์เอง
               </p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-5.png" />
-              <p>5. กดปุ่มบริจาค เพื่อบริจาคเงิน</p>
+              <img className="pic-tutorial" src="/tutorial3-3.png" />
+              <p>3. สามารถดูตรงแจ้งเตือนว่ามีคนมาขอรับของ<br />
+                หรือเจ้าของโพสต์ที่เราขอรับของไปอนุญาติมาหรือยัง
+              </p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-6.png" />
-              <p>6. เลือกจำนวนเหรียญที่ต้องการบริจาค</p>
+              <img className="pic-tutorial" src="/tutorial3-4.png" />
+              <p>
+                4.สามารถกดรายงานโพสต์ที่ไม่เหมาะสมได้
+              </p>
+            </div>
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial3-7.png" />
+              <p>5. เมื่อต้องการดูว่าโพสต์ที่ถูกใจอยู่ตรงไหน<br />
+                ให้กดไปที่หน้าข้อมูลส่วนตัว<br />
+                และปุ่มกดโพสต์ที่ถูกใจ
+              </p>
+            </div>
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial3-6.png" />
+              <p>6. จะแสดงโพสต์ที่เราเคยกดถูกใจไว้ </p>
             </div>
             </div>
       </div>
