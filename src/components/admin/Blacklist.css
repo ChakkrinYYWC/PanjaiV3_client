@@ -1,0 +1,88 @@
+.pd{
+    height: 600px;
+    width: 500px;
+  
+    overflow-y: auto;
+  }
+  
+  .fieldadmin .search-bt {
+      background-color: rgb(151, 117, 49);
+      font-size: 12pt;
+      height: 30px;
+      width: 90px;
+      font-family: 'Mali', cursive;
+      border-radius: 10px;
+      color: aliceblue;
+  }
+  
+  .fieldadmin .ui-input {
+      /* width: 50%; */
+      height: 30px;
+      margin-right: 2%;
+      font-size: 12pt;
+  }
+  
+  
+   .buttonforadmin {
+  width: 100%;
+  text-align: left;
+  } 
+  .usernameforadmin{
+  
+      text-align: left;
+  }
+  
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    width: 500px;
+  }
+  
+  #customers tr:nth-child(odd){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btnban button{
+    background-color: rgb(168, 22, 22);
+    font-size: 12pt;
+    height: 30px;
+    width: 70px;
+    font-family: 'Mali', cursive;
+    border-radius: 10px;
+    color: aliceblue;
+  
+    margin: 10px 0px 5px 170px;
+  }
+  
+   
+  .unbanforadmin img {
+    width: 95%;
+  }
+  
+  .unbanforadmin .row {
+    padding: 0px ;
+  }
+  
+  
+  .unbanforadmin .col-6 {
+    flex: 0 0 auto;
+    width: 40%;
+  }
+  
+  .unbanforadmin .row>* {
+  
+    padding: 0px;
+  }

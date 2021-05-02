@@ -44,9 +44,39 @@
 
   
 }
+.btn {
+  background-color: rgba(108, 96, 209, 0.925) ;
+  color: aliceblue;
+
+}
 
 
+.button-login .btn {
+  background-color: rgba(108, 96, 209, 0.925);
+  color: aliceblue;
+  width: 35%;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
 
+.button-login .btn:hover {
+  background-color: rgba(145, 136, 230, 0.925);
+
+  
+}
+.button-login a {
+  color: red;
+  text-decoration: underline;
+  text-decoration: none;
+  font-size: 18px;
+}
+.button-login a:hover {
+
+  text-decoration: underline;
+
+}
 
 @media screen and (max-width: 1024px ) {
   .grid-container {
@@ -76,10 +106,15 @@
  
 }
 
-.btn {
-  background-color: rgba(108, 96, 209, 0.925) ;
-  color: aliceblue;
+
+@media screen and (max-width: 768px ) {
+  .button-login .btn {
+    width: 45%;
+  }
+ 
 }
 
+.item2_log .form-group1 > input {
 
-
+  font-family: sans-serif;
+}

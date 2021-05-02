@@ -49,3 +49,12 @@
     padding: 10px 5px;
     
 }
+.boxNoti button {
+    text-transform: none;
+    height: 30px;
+    width: 40px;
+    position: relative;
+    left: 40px;
+    background-color: red;
+    color: aliceblue;
+}

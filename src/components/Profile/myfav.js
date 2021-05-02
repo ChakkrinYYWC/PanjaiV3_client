@@ -14,7 +14,6 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { ACTION_TYPES } from "../../action/postPanjai";
 import SlideShow from "react-image-show";
 
 const styles = (theme) => ({
@@ -78,6 +77,7 @@ const styles = (theme) => ({
 });
 
 function Myfav({ classes }) {
+
   const currentUser = localStorage.getItem("currentUser");
   const currentUser_email = localStorage.getItem("currentUser_email");
   const currentUser_phone = localStorage.getItem("currentUser_phone");
@@ -85,16 +85,16 @@ function Myfav({ classes }) {
   const currentUser_id = localStorage.getItem("currentUser_id");
   var Array_image = [];
   const [fav, setFav] = useState([]);
+  const [unfav, setunfav] = useState([]);
 
   function GetFav() {
     Axios.post("/profile/favorite/" + currentUser_id, {})
       .then((res) => {
-        console.log(res);
+        //console.log(res.data);
         setFav(res.data);
       })
       .catch((error) => console.log(error));
-
-    console.log("fav" + fav);
+    //console.log("fav" + fav);
     return false;
   }
 
@@ -108,15 +108,18 @@ function Myfav({ classes }) {
   };
 
 
+  const unfavoriteItem = async (id) => {
+    console.log(id)
+    await setunfav(fav.filter(fav_old => fav_old._id !== id))
+    // const data = { fav }
+    // Axios.post("/Too-Panjai/unfav/" + currentUser_id, data, {})
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((error) => console.log(error));
+  }
 
-  const unfavoriteItem = (id) => {
-    const data = { currentUser_id, currentUser };
-    Axios.post("/Too-Panjai/addFav/" + id, data, {})
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => console.log(error));
-  };
+  console.log(unfav)
 
   useEffect(() => {
     GetFav()
@@ -163,7 +166,7 @@ function Myfav({ classes }) {
                                 thumbnailsWidth="350px"
                                 thumbnailsHeight="12vw"
                                 className={classes.picture}
-                                indicators  fixedImagesHeight
+                                indicators fixedImagesHeight
                               />
                             </Grid>
                           ))

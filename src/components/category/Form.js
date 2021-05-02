@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import QRCode from 'qrcode.react';
 import Button from '@material-ui/core/Button';
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
 import useForm from '../PostPanjai/useForm'

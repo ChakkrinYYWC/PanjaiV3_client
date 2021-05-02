@@ -5,8 +5,6 @@ import Axios from 'axios';
 import { Card, Button, Modal } from 'react-bootstrap';
 import ButterToast, { Cinnamon } from "butter-toast";
 import { DeleteSweep, AccessAlarm, ThreeDRotation, AssignmentTurnedIn } from "@material-ui/icons";
-import { connect } from 'react-redux';
-import * as action from '../../action/postPanjai'
 import SlideShow from "react-image-show";
 import {
   BrowserRouter as Router,
@@ -15,10 +13,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
-import {
-
-  Grid
-} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 
 var once = false
 /*----------------------------------------------------------------------*/
@@ -69,7 +64,10 @@ function Noti(props) {
       })
     }
     if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?')) {
-      props.deletePostMessage(id, onSuccess)
+      Axios.delete('/Too-Panjai/' + id, {
+      }).then(async res => {
+        onSuccess()
+      }).catch(error => console.log(error))
       window.location.reload()
     }
 
@@ -92,7 +90,7 @@ function Noti(props) {
               {
                 post.map((record, index) => {
                   return (
-                    <div className="column  ">
+                    <div className="adminnn">
                       <Card className="foundat">
 
                         {/* <Card.Img
@@ -119,12 +117,12 @@ function Noti(props) {
                           <div className="information">ผู้สร้าง : {record.post.creator}</div>
                           <div className="information">จังหวัด : {record.post.location}</div>
                           <div className="information-1">วันที่ลง : {record.post.Timestamp}</div>
-                          <div className="pum">
+                          <div className="del">
                             <Button
                               variant="contained"
-                              color="primary"
+                     
                               size="small"
-                              className="want" // จำเป็น
+                              className="del" // จำเป็น
                               onClick={() => onDelete(record.post._id)}
                             >
                               ลบโพสต์
@@ -153,10 +151,4 @@ function Noti(props) {
   );
 }
 
-const mapActionToProps = {
-  deletePostMessage: action.Delete,
-}
-const mapStateToProps = state => ({
-  postPanjaiList: state.postPanjai.list
-})
-export default connect(mapStateToProps, mapActionToProps)(Noti);
+export default Noti;

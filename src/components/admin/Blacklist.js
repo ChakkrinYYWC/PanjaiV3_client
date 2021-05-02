@@ -1,11 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './ModalNoti.css'
+import './Blacklist.css'
 import Axios from 'axios';
-
 import { Card, Button, Modal } from 'react-bootstrap';
-
-
 import {
   BrowserRouter as Router,
   Route,
@@ -18,6 +16,7 @@ var once = false;
 
 function Blacklist() {
   const [foundUser, setFoundUser] = useState([])
+  // const [userSearchInput, setUserSearchInput] = useState("")
 
   var blackListPopup = localStorage.getItem('blackListPopup')
   //console.log(blackListPopup)
@@ -36,7 +35,14 @@ function Blacklist() {
     window.location.reload()
   };
 
-  if(once == false){
+  // const userSearch = () => {
+  //   Axios.get('/search/findUser/' + userSearchInput, {
+  //   }).then(async function (res) {
+  //     setFoundUser(res.data)
+  //   }).catch(error => console.log(error))
+  // }
+
+  if (once == false) {
     Axios.get('/search/findBanedUser', {
     }).then(async function (res) {
       setFoundUser(res.data)
@@ -61,35 +67,52 @@ function Blacklist() {
       <div className="bigpopup">
         <Modal className="popup" show={isShow}>
           <div className="pd">
-            <Modal.Header className="popuptitle" closeButton onClick={handleClose}>
+            <Modal.Header
+              className="popuptitle"
+              closeButton
+              onClick={handleClose}
+            >
               Blacklist
             </Modal.Header>
-            <Modal.Body><table width="100%">
-              {
-                foundUser.map((record, index) => {
-                  return (
-                    <div>
-                      <div>
-                        <a>{record.username}</a>
-                        <button onClick={() => UnBanUser(record._id)}>Unban</button>
-                      </div>
-                    </div>
-                  )
-                })
+            <Modal.Body>
+              <table id="customers">
+                <tr>
+                  <th>User</th>
 
-              }
-              {/* <tr>
-                <td>Username1</td>
-                <td><button > Profile </button></td>
-                <td><button > Release </button></td>
-              </tr>
-              <br />
-              <tr>
-                <td>Username2</td>
-                <td><button > Profile </button></td>
-                <td><button > Release </button></td>
-              </tr> */}
-            </table>
+                </tr>
+                {
+                  foundUser.map((record, index) => {
+                    return (
+                      <div className="unbanforadmin">
+                        <tr>
+                          <td>
+                            <div className="row m-0">
+                              <div className="column col-6 ">
+                                <img src={record.idcard} />
+                              </div>
+                              <span className="column col-6 ">
+                                <div className="usernameforadmin">username : {record.username}</div>
+                                <div className="usernameforadmin">name : {record.name}</div>
+                                <div className="usernameforadmin">email : {record.email}</div>
+                                {/* <div className="usernameforadmin">image : {record.idcard}</div> */}
+
+                                <span className="btnban" >
+                                  <button onClick={() => UnBanUser(record._id)}>UNBAN</button>
+
+                                </span>
+                              </span>
+
+
+                            </div>
+                          </td>
+                        </tr>
+                      </div>
+                    )
+                  })
+
+                }
+
+              </table>
             </Modal.Body>
           </div>
         </Modal>

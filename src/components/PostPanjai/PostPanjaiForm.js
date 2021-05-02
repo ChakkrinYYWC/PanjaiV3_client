@@ -1,8 +1,6 @@
 import React, { useEffect, useState, Component, useRef } from "react";
 import { TextField, withStyles, Button, colors, IconButton, Grid, FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
 import useForm from "./useForm";
-import { connect } from "react-redux";
-import * as actions from "../../action/postPanjai";
 import ButterToast, { Cinnamon } from "butter-toast";
 import { AssignmentTurnedIn, Repeat } from "@material-ui/icons";
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
@@ -112,49 +110,39 @@ const ButtonWrapper = styled.div`
     top: 0;
     right:0;
 `
-// function TextMaskCustom(props) {
-//     const { inputRef, ...other } = props;
-
-//     return (
-//         <MaskedInput
-//             {...other}
-//             ref={(ref) => {
-//                 inputRef(ref ? ref.inputElement : null);
-//             }}
-//             mask={[/[0-9]/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-//             placeholderChar={'\u2000'}
-//             showMask
-//         />
-//     );
-// }
-
 
 const PostPanjaiForm = ({ classes, ...props }) => {
 
     const currentUser = localStorage.getItem('currentUser')
     const [multi_image, setMulti_image] = useState([]);
     const [data, setdata] = useState([]);
-    const [text, settext] = useState()
+    const [text, settext] = useState('')
 
     useEffect(() => {
+        console.log(props.currentId)
+
+        Axios.get('/Too-Panjai/', {
+        }).then(async res => {
+            await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+            //console.log(res.data)
+        }).catch(error => console.log(error))
+
         if (props.currentId != 0) {
-            Axios.get('/Too-Panjai/', {
-            }).then(async res => {
-                await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
-                await setValues({
-                    ...data.find(x => x._id == props.currentId)
-                })
-                await setErrors({})
-                //console.log(res.data)
-            }).catch(error => console.log(error))
+            setValues({
+                ...data.find(x => x._id == props.currentId)
+            })
+            setErrors({})
         }
+
     }, [props.currentId])
 
     const validate = async () => {
-        console.log(file.length)
+        //console.log(file.length)
+
         if (file.length == 0) {
             await settext('กรุณาใส่รูป')
         }
+
         let temp = { ...errors }
         temp.title = values.title ? "" : "กรุณาใส่ข้อมูล."
         temp.message = values.message ? "" : "กรุณาใส่ข้อมูล."
@@ -231,7 +219,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
         setMulti_image(multi_image.filter(url_old => url_old !== url))
     }
 
-    console.log(file)
+    //console.log(file)
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -246,9 +234,12 @@ const PostPanjaiForm = ({ classes, ...props }) => {
             resetForm()
             setMulti_image([])
             setFile([])
+            window.location.reload()
         }
         console.log(validate())
+        console.log(text)
         if (await validate() && text == '') {
+
             if (props.currentId == 0) {
 
                 const formData = new FormData();
@@ -263,10 +254,20 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                 formData.append('location', values.location);
                 formData.append('creator', currentUser);
 
-                props.createPostPanjai(formData, onSuccess) //ส่งค่าไปserver
+                Axios.post('/Too-Panjai/', formData, {
+                }).then(async res => {
+                    onSuccess()
+                    console.log(res.data)
+                }).catch(error => console.log(error))
+
             }
-            else
-                props.updatePostPanjai(props.currentId, values, onSuccess)
+            else {
+                Axios.put('/Too-Panjai/' + props.currentId, values, {
+                }).then(async res => {
+                    onSuccess()
+                    //console.log(res.data)
+                }).catch(error => console.log(error))
+            }
         }
 
     }
@@ -296,8 +297,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         {/* <div>
                         <img src={src} alt={alt} className={classes.imgpreview} />
                     </div> */}
-                        {console.log(file)}
-                        {console.log(multi_image)}
+
                         {renderPhotos(multi_image, file)}
 
                         <input
@@ -380,18 +380,6 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                             {...(errors.contect && { error: true, helperText: errors.contect })}
                         />
 
-                        {/* <FormControl fullWidth>
-                            <InputLabel htmlFor="formatted-text-mask-input">เบอร์โทรศัพท์</InputLabel>
-                            <Input
-                                value={values.contect}
-                                onChange={handleChange}
-                                name="contect"
-                                id="formatted-text-mask-input"
-                                inputComponent={TextMaskCustom}
-                                {...(errors.contect && { error: true, helperText: errors.contect })}
-                            />
-                        </FormControl> */}
-
                     </Grid>
 
                     <Grid item xs={12} sm={6}
@@ -400,18 +388,6 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         justify="center"
                         alignItems="center"
                     >
-
-                        {/* <TextField
-                        name="location"
-                        variant="filled"
-                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
-                        label="จังหวัด"
-                        fullWidth
-                        size="small"
-                        value={values.location}
-                        onChange={handleInputChange}
-                        {...(errors.location && { error: true, helperText: errors.location })}
-                    /> */}
                         <FormControl fullWidth className={classes.select}>
                             <InputLabel >จังหวัด</InputLabel>
                             <Select
@@ -550,17 +526,6 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
 }
 
-
-// const mapStateToProps = state => ({
-//     postPanjaiList: state.postPanjai.list
-// })
-
-// const mapActionToProps = {
-//     createPostPanjai: actions.create,
-//     updatePostPanjai: actions.update
-// }
-
-//export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(PostPanjaiForm));
 export default (withStyles(styles)(PostPanjaiForm));
 
 

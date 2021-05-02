@@ -1,12 +1,9 @@
 import React, { Component, useEffect, useState } from 'react';
 import './category.css'
 import { Card } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import * as action from '../../action/postFDT'
 import moment from 'moment';
 import Axios from 'axios';
 import Button from '@material-ui/core/Button';
-
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import SlideShow from 'react-image-show';
@@ -30,42 +27,20 @@ function Category({ ...props }) {
 
     const [loading, setLoading] = useState(true);
     const [bg, setBg] = useState();
+    const [dataFDT, setdataFDT] = useState([])
 
-    // const ArrayimgHeader = [
-    //     {
-    //         category: "เด็กและเยาวชน",
-    //         img: "dek.png"
-    //     },
-    //     {
-    //         category: "ผู้สูงอายุ",
-    //         img: "https://www.rakkaya.com/wp-content/uploads/2019/11/geriatric-package.jpg"
-    //     },
-    // ]
-
-    // const [imgHeaderPage,setimgHeaderPage] = useState();
 
     useEffect(async () => {
-        await props.fetchAllPostFDT()
+        // await props.fetchAllPostFDT()
         //console.log(props.postFDTList);
+        Axios.get('/Foundation/', {
+        }).then(async res => {
+            await setdataFDT(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+        }).catch(error => console.log(error))
 
-        // function getImg(ArrayimgHeader) {
-
-        //     ArrayimgHeader.map((item) => {
-
-        //         if (item.category === props.currentId.match.params.name) {
-        //             // alert(item.img);
-        //             setimgHeaderPage(item.img)
-        //             console.log(imgHeaderPage);
-        //         }
-
-        //         return imgHeaderPage;
-        //     })
-        // }
-        // await getImg(ArrayimgHeader);
         await setLoading(false);
 
     }, [])
-    //console.log(props)
 
     const data = { data: props.currentId.match.params.name }
     Axios.post('/Foundation/background', data, {
@@ -104,7 +79,7 @@ function Category({ ...props }) {
                                 <div className="foundation">
                                     <div className="row m-0">
                                         {
-                                            props.postFDTList.filter(fdt => fdt.category == props.currentId.match.params.name).map((record, index) => {
+                                            dataFDT.filter(fdt => fdt.category == props.currentId.match.params.name).map((record, index) => {
                                                 return (
                                                     <div className="column col-xs-6 col-sm-6 col-md-6 col-lg-4">
                                                         <Card className="foundat">
@@ -136,15 +111,6 @@ function Category({ ...props }) {
                                 </div>
 
                             </div>
-                            {/* <div>21866666673</div> */}
-                            {/* <footer id="sticky-footer" >
-                                                <div className="footer">
-                                                  
-                                                    <div className="logofooter" ><i className="fab fa-gratipay"></i></div>
-                                                    <Link to="/#001" className="textfooter">ปันใจ </Link>
-                                                   
-                                                </div>
-                                            </footer> */}
 
                         </div>
 
@@ -157,12 +123,4 @@ function Category({ ...props }) {
     );
 }
 
-const mapStateToProps = state => ({
-    postFDTList: state.postFDT.list
-})
-
-const mapActionToProps = {
-    fetchAllPostFDT: action.fetchAll
-}
-
-export default connect(mapStateToProps, mapActionToProps)(Category);
+export default Category;
