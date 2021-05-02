@@ -218,7 +218,7 @@ function Categoryshow({ classes, ...props }) {
 
                                         imagesWidth="600px"
                                         imagesHeight="400px"
-                                        imagesHeightMobile="36vw"
+                                        imagesHeightMobile="22vw"
 
                                         thumbnailsWidth="920px"
                                         thumbnailsHeight="12vw"
@@ -280,7 +280,7 @@ function Categoryshow({ classes, ...props }) {
                                 <div className="infor">วันสิ้นสุดโครงการ : {moment(dataFDT.endtime).format('L')}</div>
                             </div>
                             <center><Button variant="contained" onClick={handleClickOpen}>
-                                บริจาค
+                            <i class="far fa-heart"></i> &nbsp; ร่วมบริจาค &nbsp;<i class="far fa-heart"></i>
                                             </Button></center>
 
                             <Dialog
@@ -346,7 +346,7 @@ function Categoryshow({ classes, ...props }) {
 
                                         imagesWidth="600px"
                                         imagesHeight="400px"
-                                        imagesHeightMobile="36vw"
+                                        imagesHeightMobile="22vw"
 
                                         thumbnailsWidth="920px"
                                         thumbnailsHeight="12vw"
@@ -409,7 +409,7 @@ function Categoryshow({ classes, ...props }) {
                             <center >
 
                                 <Button variant="contained" onClick={handleClickOpen}>
-                                    บริจาค
+                                <i class="far fa-heart"></i> &nbsp; ร่วมบริจาค &nbsp;<i class="far fa-heart"></i>
                                                 </Button>
 
                             </center>
