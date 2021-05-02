@@ -117,9 +117,9 @@ function Myfav({ classes }) {
     console.log(prepair_id)
     
     const data = { prepair_id }
-    Axios.post("/Too-Panjai/unfav/" + currentUser_id, data, {})
-      .then((res) => {
-        console.log(res);
+    await Axios.post("/Too-Panjai/unfav/" + currentUser_id, data, {})
+      .then(async (res) => {
+        window.location.reload()
       })
       .catch((error) => console.log(error));
   }
