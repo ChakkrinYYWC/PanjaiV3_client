@@ -62,14 +62,14 @@ class tutorial extends Component {
               <p>3. เลือกมูลนิธิที่ต้องการบริจาค</p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-4.png" />
+              <img className="pic-tutorial" src="/tutorial-4.png" />
               <p>
                 4.รายละเอียดของมูลนิธิ <br />
                 และมีแผนที่ดูที่ตั้งของมูลนิธิ{" "}
               </p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-5.png" />
+              <img className="pic-tutorial" src="/tutorial1-4.png" />
               <p>5. กดปุ่มบริจาค เพื่อบริจาคเงิน</p>
             </div>
             <div class="grid-item-tutorial">
@@ -123,7 +123,7 @@ class tutorial extends Component {
               <img className="pic-tutorial" src="/tutorial1-4.png" />
               <p>
                 4.รายละเอียดของมูลนิธิ <br />
-                และมีแผนที่ดูที่ตั้งของมูลนิธิ{" "}
+                และมีแผนที่ดูที่ตั้งของมูลนิธิ
               </p>
             </div>
             <div class="grid-item-tutorial">

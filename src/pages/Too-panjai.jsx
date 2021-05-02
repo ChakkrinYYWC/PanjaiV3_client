@@ -1,9 +1,7 @@
 import Axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
-import { Provider } from "react-redux";
 import PostPanjai from "../components/PostPanjai/PostPanjai";
-import { store } from "../action/store";
 import { Container, AppBar, Typography } from "@material-ui/core";
 import ButterToast, { POS_RIGHT, POS_TOP } from "butter-toast";
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -45,29 +43,29 @@ function Too_panjai() {
     return (
         <div className={classes.bg} >
 
-            <Provider store={store} >
-                <Container maxWidth="lg" >
+            {/* <Provider store={store} > */}
+            <Container maxWidth="lg" >
 
-                    <div position="static" className={classes.bg} >
+                <div position="static" className={classes.bg} >
 
 
-                        <Typography
-                            variant="h2"
-                            align="center">
-                            {/* ข้อความ */}
-                            <span className={classes.toopanjaitext}>ตู้ ปั น ใ จ</span>
-                        </Typography>
-                    </div>
-                    <PostPanjai />
-                    <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-                </Container>
-            </Provider>
+                    <Typography
+                        variant="h2"
+                        align="center">
+                        {/* ข้อความ */}
+                        <span className={classes.toopanjaitext}>ตู้ ปั น ใ จ</span>
+                    </Typography>
+                </div>
+                <PostPanjai />
+                <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+            </Container>
+            {/* </Provider> */}
             <Black />
             <User />
-            <Provider store={store}>
-                <Noti_report />
-                <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-            </Provider>
+
+            <Noti_report />
+            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+
         </div>
     );
 }

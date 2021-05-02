@@ -53,3 +53,116 @@
   padding-left: 50px;
  
   }
+  @media screen and (max-width: 1024px) {
+    .bg-tutorial {
+      height: auto;
+      padding: 50px;
+    }
+    
+  .bg-tutorial1 {
+      width: 95%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+    .grid-container-tutorial {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      padding: 10px;
+    }
+    .grid-item-tutorial p {
+      /* border: 1px solid rgba(0, 0, 0, 0.8); */
+      padding: 5px;
+      font-size: 12px;
+      text-align: center;
+    }
+    .pic-tutorial {
+      width: 250px;
+      
+    }
+    .pic-tutorial:hover {
+      
+      transform: scale(3);
+      cursor: pointer;
+      position: absolute;
+      
+    }
+    /* วิธีใช้ */
+    .topic-tutorial1 p {
+      color: rgb(109, 84, 34);
+    border: 40px;
+    font-size: 24px;
+    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    
+    }
+    /* 1. วิธีการบริจาคเงินให้กับมูลนิธิต่าง ๆ */
+    .topic-tutorial-1 p {
+      color: rgb(114, 83, 16);
+      border: 40px;
+    font-size: 13px;
+    padding-left: 50px;
+  }
+}
+
+
+@media screen and (max-width: 376px) {
+  .bg-tutorial {
+    height: auto;
+    padding: 10px;
+  }
+  
+.bg-tutorial1 {
+    width: 97%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  .grid-container-tutorial  {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+   
+  }
+  .grid-item-tutorial p {
+    /* border: 1px solid rgba(0, 0, 0, 0.8); */
+    
+    font-size: 12px;
+    text-align: center;
+  }
+  .pic-tutorial {
+    width: 150px;
+    
+  }
+  .pic-tutorial:hover {
+    
+    transform: scale(3);
+    cursor: pointer;
+    position: absolute;
+    
+  }
+  /* วิธีใช้ */
+  .topic-tutorial p {
+  color: rgb(109, 84, 34);
+  border: 40px;
+  font-size: 14px;
+  text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 26px;
+  
+  
+  }
+  /* 1. วิธีการบริจาคเงินให้กับมูลนิธิต่าง ๆ */
+  .topic-tutorial-1 p {
+  color: rgb(114, 83, 16);
+  border: 40px;
+  font-size: 14px;
+  
+}
+
+}

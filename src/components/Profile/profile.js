@@ -1,7 +1,4 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { connect } from 'react-redux';
-import * as action from '../../action/postPanjai'
-import * as action2 from '../../action/profile'
 import './profile.css'
 import ButterToast, { Cinnamon } from "butter-toast";
 import { DeleteSweep } from "@material-ui/icons";
@@ -206,10 +203,13 @@ function Profile({ classes, ...props }) {
                     icon={<DeleteSweep />}
                 />
             })
+            window.location.reload()
         }
         if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?')) {
-            props.deletePostMessage(id, onSuccess)
-            window.location.href = "/profile/" + currentUserID
+            Axios.delete('/Too-Panjai/' + id, {
+            }).then(async res => {
+                onSuccess()
+            }).catch(error => console.log(error))
         }
     }
 
@@ -226,8 +226,12 @@ function Profile({ classes, ...props }) {
             })
         }
         if (validate()) {
-            await localStorage.setItem("currentUser_name", values.name)
-            props.updateProfile(currentUserID, values, onSuccess)
+            await Axios.put('/profile/' + currentUserID, values, {
+            }).then(res => {
+                console.log(res.data)
+                localStorage.setItem("currentUser_name", values.name)
+                onSuccess()
+            }).catch(error => console.log(error))
             window.location.href = "/profile/" + currentUserID
         }
     }
@@ -254,7 +258,7 @@ function Profile({ classes, ...props }) {
                                             <span> <i className="fa fa-user"> </i> ชื่อ-นามสกุล</span>
                                             <TextField
                                                 name="name"
-                                               
+
 
                                                 fullWidth
                                                 size="small"
@@ -294,7 +298,7 @@ function Profile({ classes, ...props }) {
                                             <span> <i className="fas fa-address-card"> </i> ที่อยู่</span>
                                             <TextField
                                                 name="address"
-                                               
+
 
                                                 fullWidth
                                                 size="small"
@@ -468,14 +472,4 @@ function Profile({ classes, ...props }) {
 
     )
 }
-const mapStateToProps = state => ({
-    postPanjaiList: state.postPanjai.list
-})
-
-const mapActionToProps = {
-    fetchAllPostPanjai: action.fetchAll,
-    fetchAllProfile: action2.fetchAll,
-    deletePostMessage: action.Delete,
-    updateProfile: action2.update
-}
-export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(Profile));
+export default (withStyles(styles)(Profile));

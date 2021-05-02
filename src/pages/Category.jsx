@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Category from "../components/category/category";
-import { store } from "../action/store";
-import { Provider } from "react-redux";
 import PostFDT from "../components/foundation/PostFDT";
 import ButterToast, { POS_RIGHT, POS_TOP } from "butter-toast";
 import { Fab, withStyles, Typography, IconButton, Dialog } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import AddIcon from '@material-ui/icons/Add';
-import PageFoundation from '../components/foundation/foundation'
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
-import PostPanjaiForm from '../components/PostPanjai/PostPanjaiForm';
-
 import User from '../components/admin/User'
 import Noti_report from '../components/admin/Noti'
 import Black from '../components/admin/Blacklist'
@@ -93,40 +88,33 @@ function Catego({ classes, ...props }) {
         <>
             <If condition={currentUser == 'admin'}>
                 <Then>
-                    <Provider store={store} >
-                        <Category {...{ currentId, setCurrentId }} />
 
-                        <Fab style={mystyle} size="small" aria-label="add" onClick={handleClickOpen} >
-                            <AddIcon />
-                        </Fab>
+                    <Category {...{ currentId, setCurrentId }} />
 
-                        <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                            <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                                Post Foundation
+                    <Fab style={mystyle} size="small" aria-label="add" onClick={handleClickOpen} >
+                        <AddIcon />
+                    </Fab>
+
+                    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                            Post Foundation
                         </DialogTitle>
-                            <PostFDT {...{ current, setCurrent }} />
-                            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-                        </Dialog>
-
-
-
-
-                    </Provider>
+                        <PostFDT {...{ current, setCurrent }} />
+                        <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+                    </Dialog>
 
                 </Then>
                 <Else>
-                    <Provider store={store}>
-                        <Category {...{ currentId, setCurrentId }} />
-                    </Provider>
+                    <Category {...{ currentId, setCurrentId }} />
 
                 </Else>
             </If>
             <Black />
             <User />
-            <Provider store={store}>
-                <Noti_report />
-                <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-            </Provider>
+
+            <Noti_report />
+            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+
         </>
 
     );
