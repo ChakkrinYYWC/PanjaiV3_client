@@ -8,15 +8,20 @@ export const ACTION_TYPES = {
 }
 
 export const fetchAll = () => dispatch => {
+    //console.log("GETT")
     api.postPanjai().fetchAll()
         .then(res => {
-            //console.log(res)
+            console.log('*')
+            // console.log(res)
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,
                 payload: res.data
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log('**')
+            console.log(err)
+        })
 
 }
 

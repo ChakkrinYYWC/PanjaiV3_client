@@ -29,7 +29,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { If, Then, ElseIf, Else } from "react-if-elseif-else-render";
 import Icon from "@material-ui/core/Icon";
 import Axios from "axios";
-
 import SlideShow from "react-image-show";
 import styled from 'styled-components'
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -47,7 +46,7 @@ const styles = (theme) => ({
     paddingLeft: '24px',
     paddingRight: '24px',
     height: '5000px'
-},
+  },
   paper: {
     margin: theme.spacing(3),
     padding: theme.spacing(2),
@@ -55,18 +54,18 @@ const styles = (theme) => ({
   smMargin: {
     "&:hover": {
       backgroundColor: "rgba(85, 52, 4, 0.925)",
-      
-      
+
+
     },
     margin: theme.spacing(1),
     background: "rgba(187, 130, 44, 0.925)",
-    
-    
+
+
   },
   smMargin1: {
     "&:hover": {
       backgroundColor: "rgba(85, 52, 4, 0.925)",
-      
+
     },
     margin: theme.spacing(1),
     background: "#a13800",
@@ -114,24 +113,20 @@ const styles = (theme) => ({
   },
   bg1: {
     backgroundColor: "rgba(187, 130, 44, 0.925)",
-    
-    
+
+
   },
   reportpost: {
-    color:" rgb(151, 117, 49)"
+    color: " rgb(151, 117, 49)"
   }
 });
 
-// const options = [
-//   // 'แก้ไข',
-//   // 'ลบ',
-//   "รายงานโพสต์",
-// ];
 const ITEM_HEIGHT = 48;
 
 const PostPanjai = ({ classes, ...props }) => {
 
   const [currentId, setCurrentId] = useState(0)
+  const [data, setdata] = useState([])
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   var Array_image = [];
@@ -148,6 +143,13 @@ const PostPanjai = ({ classes, ...props }) => {
   // onetime()
 
   useEffect(() => {
+    console.log(props.fetchAllPostPanjai())
+    // Axios.get('/Too-Panjai/', {
+    // }).then(async res => {
+    //   await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+    //   //console.log(res.data)
+    // }).catch(error => console.log(error))
+
     props.fetchAllPostPanjai()
     window.scrollTo({
       top: 0,
@@ -182,13 +184,13 @@ const PostPanjai = ({ classes, ...props }) => {
 
   const [select, setSelect] = React.useState('');
 
-  const handleChange = (id, option) => {
-    console.log('*' + option)
-    console.log('*' + id)
-    //reportItem(id)
-    // }
-    setAnchorEl(null);
-  };
+  // const handleChange = (id, option) => {
+  //   console.log('*' + option)
+  //   console.log('*' + id)
+  //   //reportItem(id)
+  //   // }
+  //   setAnchorEl(null);
+  // };
 
 
   const handleClick = (event) => {
@@ -235,7 +237,9 @@ const PostPanjai = ({ classes, ...props }) => {
     }
   };
 
-  props.postPanjaiList.sort((a, b) => (a._id > b._id ? -1 : 1)); //sortdata
+  // props.postPanjaiList.sort((a, b) => (a._id > b._id ? -1 : 1)); //sortdata
+  
+
 
   // const urlArray = [
   //     "https://dj.lnwfile.com/k5jt1b.jpg",
@@ -243,6 +247,7 @@ const PostPanjai = ({ classes, ...props }) => {
   //     "https://pbs.twimg.com/media/DbZSHVNVQAceHgM.jpg",
   //     "http://localhost:3001/image/image-1619203503293.jpg"
   // ]
+  // data.map(record => console.log(record))
 
   return (
     <>
@@ -260,7 +265,7 @@ const PostPanjai = ({ classes, ...props }) => {
 
       <Grid container spacing={3}>
         {/* ฝั่งขวา ใช้ classes.ชื่ออื่่น */}
-        {props.postPanjaiList.map((record, index) => {
+        {data.map((record, index) => {
           return (
             <Grid item xs={12} sm={4}>
               {/* {index} */}
@@ -289,45 +294,24 @@ const PostPanjai = ({ classes, ...props }) => {
                               <MoreVertIcon />
                             </IconButton> */}
                             <div className="reportpost-button">
-                            <DropdownButton id="dropdown-item-button " title="" >
-                              <span className="reportpost">
-                                <Dropdown.Item as="button">
-                                  
-                                  <div className="reportpost-button1"
-                                    onClick={() =>
-                                      reportItem(record._id)
-                                      //console.log(record._id)
-                                      
-                                    }
-                                  >
-                                    รายงานโพสต์
+                              <DropdownButton id="dropdown-item-button " title="" >
+                                <span className="reportpost">
+                                  <Dropdown.Item as="button">
+
+                                    <div className="reportpost-button1"
+                                      onClick={() =>
+                                        reportItem(record._id)
+                                        //console.log(record._id)
+
+                                      }
+                                    >
+                                      รายงานโพสต์
                               </div>
-                                </Dropdown.Item>
-                              </span>
-                            </DropdownButton>
+                                  </Dropdown.Item>
+                                </span>
+                              </DropdownButton>
                             </div>
-                            {/* <Menu
-                              id="long-menu"
-                              anchorEl={anchorEl}
-                              keepMounted
-                              open={open}
-                              onClose={handleClose}
-                              PaperProps={{
-                                style: {
-                                  maxHeight: ITEM_HEIGHT * 4.5,
-                                  width: "20ch",
-                                },
-                              }}
-                            >
-                              <MenuItem
-                                onClick={() =>
-                                  // reportItem(record._id)
-                                  console.log(record._id)
-                                }
-                              >
-                                {record._id}
-                              </MenuItem>
-                            </Menu> */}
+
                           </Grid>
                         )}
                       </Grid>
@@ -336,7 +320,7 @@ const PostPanjai = ({ classes, ...props }) => {
                       </div>
 
                       <Grid container justify="center">
-                        <SlideShow 
+                        <SlideShow
                           images={record.image}
                           width="400px"
                           imagesWidth="300px"
@@ -345,36 +329,11 @@ const PostPanjai = ({ classes, ...props }) => {
                           thumbnailsWidth="520px"
                           thumbnailsHeight="12vw"
                           // className={classes.picture}
-                          indicators  fixedImagesHeight
+                          indicators fixedImagesHeight
                         />
                       </Grid>
-                      {/* {
-                        ((Array_image = []),
-                        record.image.map((image, index) => {
-                          Array_image.push(
-                            "http://localhost:3001/image/" + image
-                          );
-                        }),
-                        (
-                          <Grid container justify="center">
-                            <SlideShow className="imageslide"
-                              images={Array_image}
-                              width="400px"
-                              imagesWidth="300px"
-                              imagesHeight="180px"
-                              imagesHeightMobile="56vw"
-                              thumbnailsWidth="350px"
-                              thumbnailsHeight="12vw"
-                              className={classes.picture}
-                              indicators thumbnails fixedImagesHeight
-                            />
-                          </Grid>
-                        ))
-                      } */}
 
-                      {/* <div className={`${classes.color1} ${classes.frontpost}`}>
-                        โทร : {record.contect}
-                      </div> */}
+
                       <div className={`${classes.color1} ${classes.frontpost}`}>
                         จังหวัด : {record.location}
                       </div>

@@ -11,8 +11,9 @@ import { DeleteSweep } from "@material-ui/icons";
 import styled from 'styled-components'
 import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
-import axios from 'axios'
+import Axios from 'axios'
 import './PostPanjai.css'
+import { data } from "jquery";
 
 const initialFieldValues = {
     title: '',
@@ -132,21 +133,27 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
     const currentUser = localStorage.getItem('currentUser')
     const [multi_image, setMulti_image] = useState([]);
+    const [data, setdata] = useState([]);
     const [text, settext] = useState()
 
     useEffect(() => {
         if (props.currentId != 0) {
-            setValues({
-                ...props.postPanjaiList.find(x => x._id == props.currentId)
-            })
-            setErrors({})
+            Axios.get('/Too-Panjai/', {
+            }).then(async res => {
+                await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+                await setValues({
+                    ...data.find(x => x._id == props.currentId)
+                })
+                await setErrors({})
+                //console.log(res.data)
+            }).catch(error => console.log(error))
         }
     }, [props.currentId])
 
     const validate = async () => {
         console.log(file.length)
         if (file.length == 0) {
-            await settext('กรุณาใส่รูป') 
+            await settext('กรุณาใส่รูป')
         }
         let temp = { ...errors }
         temp.title = values.title ? "" : "กรุณาใส่ข้อมูล."
@@ -160,7 +167,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
         return Object.values(temp).every(x => x === "")
     }
 
-    console.log(text)
+    //console.log(text)
 
     var {
         values,
@@ -307,7 +314,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                             </IconButton>
                         </label>
 
-                        <div style={{color: "rgb(117, 24, 12)" , textAlign: "center" }}>{text}</div>
+                        <div style={{ color: "rgb(117, 24, 12)", textAlign: "center" }}>{text}</div>
                         {/* แสดงเป็นตัวอักษรสีแดง */}
 
                     </Grid>
@@ -342,12 +349,12 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                         <TextField
                             name="message"
-                            
+
                             InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
                             label="ข้อมูลสิ่งของ"
                             fullWidth
                             size="small"
-                            
+
                             // rows={4}
                             value={values.message}
                             onChange={handleInputChange}
@@ -363,7 +370,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         <TextField
                             type='number'
                             name="contect"
-                            
+
                             InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
                             label="เบอร์โทรศัพท์"
                             fullWidth
@@ -452,7 +459,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         // style={{backgroundColor:'white', marginBottom:'1rem', marginTop:'1rem'}}
                         InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
                         name="title"
-                    
+
                         label="ชื่อสิ่งของ"
                         fullWidth
                         className={classes.paper}
@@ -471,7 +478,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                     <TextField
                         name="message"
-                        
+
                         InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
                         label="ข้อมูล"
                         fullWidth
@@ -490,7 +497,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                     <TextField
                         name="contect"
-                        
+
                         InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
                         label="เบอร์โทรศัพท์"
                         fullWidth
@@ -544,16 +551,17 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 }
 
 
-const mapStateToProps = state => ({
-    postPanjaiList: state.postPanjai.list
-})
+// const mapStateToProps = state => ({
+//     postPanjaiList: state.postPanjai.list
+// })
 
-const mapActionToProps = {
-    createPostPanjai: actions.create,
-    updatePostPanjai: actions.update
-}
+// const mapActionToProps = {
+//     createPostPanjai: actions.create,
+//     updatePostPanjai: actions.update
+// }
 
-export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(PostPanjaiForm));
+//export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(PostPanjaiForm));
+export default (withStyles(styles)(PostPanjaiForm));
 
 
 
