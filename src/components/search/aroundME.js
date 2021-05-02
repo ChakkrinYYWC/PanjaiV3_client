@@ -217,27 +217,7 @@ class Map extends React.PureComponent {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    
 
                                 </>
                             ))

@@ -6,6 +6,7 @@ import Axios from 'axios';
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
 
 
+
 import {
   BrowserRouter as Router,
   Route,
@@ -26,10 +27,9 @@ import {
   Container,
   Button,
 } from "@material-ui/core";
+import SlideShow from "react-image-show";
 
-import { Search } from "@material-ui/icons";
-import { render } from 'react-dom';
-import { propTypes } from 'react-bootstrap/esm/Image';
+
 
 export default function Checkboxes() {
   const [checked, setChecked] = React.useState(true);
@@ -56,20 +56,77 @@ export default function Checkboxes() {
 
 
   const styles = (theme) => ({
+    MuiContainerRoot: {
+      paddingLeft: '24px',
+      paddingRight: '24px',
+      height: '5000px'
+  },
+    paper: {
+      margin: theme.spacing(3),
+      padding: theme.spacing(2),
+    },
     smMargin: {
       "&:hover": {
         backgroundColor: "rgba(85, 52, 4, 0.925)",
+        
+        
       },
       margin: theme.spacing(1),
       background: "rgba(187, 130, 44, 0.925)",
+      
+      
     },
-
     smMargin1: {
       "&:hover": {
         backgroundColor: "rgba(85, 52, 4, 0.925)",
+        
       },
       margin: theme.spacing(1),
       background: "#a13800",
+    },
+    actionDiv: {
+      textAlign: "center",
+    },
+    // กรอบที่ใส่โพส
+    post1: {
+      borderRadius: "20px",
+      boxShadow: "0 1px 1px 1px rgba(85, 52, 4, 0.925)",
+      height: "auto",
+      padding: "30px 30px",
+      marginBlock: "15px",
+    },
+    // กรอบโพส
+    framepost: {
+      // background: '#f9a825',
+      borderRadius: 5,
+      boxShadow: "1px   1px 1px 1px rgba(187, 130, 44, 0.925)",
+      color: "rgba(187, 130, 44, 0.925)",
+      height: "100%",
+      padding: "10px 10px",
+      marginBlock: "15px",
+      borderRadius: "20px",
+    },
+    frampicture: {
+      padding: "10px 10px",
+    },
+    picture: {
+      height: "150px",
+      width: "auto",
+      margin: "10px auto",
+    },
+    frontpost: {
+      fontFamily: "mali",
+      borderRadius: "50px",
+    },
+    color1: {
+      color: "#a13800",
+    },
+    judjudjud: {
+      display: "flex",
+      justifyContent: "flex-end",
+    },
+    bg1: {
+      backgroundColor: "rgba(187, 130, 44, 0.925)",
     }
   });
 
@@ -147,7 +204,7 @@ export default function Checkboxes() {
                         src={'http://localhost:3001/image/' + record.image}
                       />
                       <Card.Body>
-                        <Link className="Tfound">{record.title}</Link>
+                        <Link className="Tfound1">{record.title}</Link>
                         <div className="information">ต้องการรับบริจาค :{record.item}</div>
                         <div className="information">จำนวน :{record.n_item}</div>
                         <div className="information-1">วันที่ลง :{record.Timestamp}</div>
@@ -192,16 +249,30 @@ export default function Checkboxes() {
           {
             postTPJ.map((record, index) => {
               return (
+              
+               
                 <div className="column col-4">
-                  {/* <div className="column col-xs-6 col-sm-6 col-md-6 col-lg-4"> */}
-                  <Card className="foundat">
-                    <img
-                      variant="top"
-                      src={'http://localhost:3001/image/' + record.image}
-                    />
+                  <Card className="foundat2">
+                  <Card.Body>
+                  <center><Link className="Tfound1">{record.title}</Link></center>
+                  </Card.Body>
+                 
+                         <Grid container justify="center" >
+                                <SlideShow 
+                                images={record.image}
+                                width="400px"
+                                imagesWidth="300px"
+                                imagesHeight="200px"
+                                imagesHeightMobile="36vw"
+                                thumbnailsWidth="520px"
+                                thumbnailsHeight="12vw"
+                                // className={classes.picture}
+                                indicators  fixedImagesHeight
+                                className="img101"
+                              />
+                            </Grid>
                     <Card.Body>
-                      <Link className="Tfound">{record.title}</Link>
-                      <div className="information">โทร :{record.contect}</div>
+                      {/* <Link className="Tfound">{record.title}</Link> */}
                       <div className="information">จังหวัด :{record.location}</div>
                       <div className="information">ผู้สร้าง :{record.creator}</div>
                       <div className="information-1">วันที่ลง :{record.Timestamp}</div>
@@ -225,7 +296,12 @@ export default function Checkboxes() {
                       </div>
                     </Card.Body>
                   </Card>
+
                 </div>
+
+
+
+
                 )
               })
 
