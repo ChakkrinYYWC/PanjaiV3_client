@@ -125,28 +125,9 @@ function Homepage() {
                             <div className="lover">
                               <Dropdown.Item>
                                 <Link to={"/FDTpopup"} className="love">
-                                  <div onClick={() => FDTclicked(record._id[0])}>{record._id[0]}</div>
+                                  <div onClick={() => FDTclicked(record._id)}>{record._id}({record.count})</div>
                                 </Link>
                               </Dropdown.Item>
-                              <If condition={record._id[1]}>
-                                <Then>
-                                  <Dropdown.Item>
-                                    <Link to={"/FDTpopup"} className="love">
-                                      <div onClick={() => FDTclicked(record._id[1])}>{record._id[1]}</div>
-                                    </Link>
-                                  </Dropdown.Item>
-
-                                  <If condition={record._id[2]}>
-                                    <Then>
-                                      <Dropdown.Item>
-                                        <Link to={"/FDTpopup"} className="love">
-                                          <div onClick={() => FDTclicked(record._id[2])}>{record._id[2]}</div>
-                                        </Link>
-                                      </Dropdown.Item>
-                                    </Then>
-                                  </If>
-                                </Then>
-                              </If>
                             </div>
                           );
                         })}
