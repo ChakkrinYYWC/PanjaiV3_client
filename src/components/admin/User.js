@@ -57,10 +57,12 @@ function SearchUser() {
   }
 
   function BanUser(data) {
-    Axios.get('/authenticate/banUser/' + data, {
-    }).then(res => {
-      console.log(res)
-    }).catch(error => console.log(error))
+    if (window.confirm("Do you really want to ban?")) {
+      Axios.get('/authenticate/banUser/' + data, {
+      }).then(res => {
+        console.log(res)
+      }).catch(error => console.log(error))
+    }
   }
   console.log(foundUser)
 
