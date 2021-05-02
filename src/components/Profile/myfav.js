@@ -107,19 +107,22 @@ function Myfav({ classes }) {
       .catch((error) => console.log(error));
   };
 
-
   const unfavoriteItem = async (id) => {
-    console.log(id)
-    await setunfav(fav.filter(fav_old => fav_old._id !== id))
-    // const data = { fav }
-    // Axios.post("/Too-Panjai/unfav/" + currentUser_id, data, {})
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((error) => console.log(error));
-  }
+    var prepairdata = fav.filter(fav_old => fav_old._id !== id)
 
-  console.log(unfav)
+    var prepair_id = [];
+    for (let i = 0; i < prepairdata.length; i++) {
+      prepair_id.push(prepairdata[i]._id)
+    }
+    console.log(prepair_id)
+    
+    const data = { prepair_id }
+    Axios.post("/Too-Panjai/unfav/" + currentUser_id, data, {})
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => console.log(error));
+  }
 
   useEffect(() => {
     GetFav()
