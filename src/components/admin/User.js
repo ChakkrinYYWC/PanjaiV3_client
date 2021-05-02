@@ -58,10 +58,12 @@ function SearchUser() {
   }
 
   function BanUser(data) {
-    Axios.get('/authenticate/banUser/' + data, {
-    }).then(res => {
-      console.log(res)
-    }).catch(error => console.log(error))
+    if (window.confirm("Do you really want to ban?")) {
+      Axios.get('/authenticate/banUser/' + data, {
+      }).then(res => {
+        console.log(res)
+      }).catch(error => console.log(error))
+    }
   }
   console.log(foundUser)
 
@@ -83,10 +85,11 @@ function SearchUser() {
                 <input type="text" className="ui-input" placeholder="ค้นหาชื่อผู้ใช้"
                   onChange={(event) => {
                     setUserSearchInput(event.target.value)
+                    userSearch()
                   }} />
-                <button onClick={() => userSearch()} className="search-bt">
+                {/* <button onClick={() => userSearch()} className="search-bt">
                   ค้นหา
-                </button>
+                </button> */}
               </div><br />
               <div>
 

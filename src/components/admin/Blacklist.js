@@ -50,12 +50,14 @@ function Blacklist() {
     once = true
   }
 
-  function UnBanUser(data) {
-    Axios.get('/authenticate/unBanUser/' + data, {
-    }).then(res => {
-      //console.log(res)
-      window.location.reload()
-    }).catch(error => console.log(error))
+  function UnBanUser(data){
+    if (window.confirm("Do you really want to unban?")) {
+      Axios.get('/authenticate/unBanUser/' + data, {
+      }).then(res => {
+          //console.log(res)
+          window.location.reload()
+      }).catch(error => console.log(error))
+    }
   }
 
 
