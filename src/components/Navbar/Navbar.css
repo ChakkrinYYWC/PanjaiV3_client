@@ -2,6 +2,7 @@
     z-index: 1 !important; 
 }
 .NavbarItems {
+    
     background: rgba(161, 128, 79, 0.925) ;
     height: 80px;
     display: grid;
@@ -16,6 +17,11 @@
     z-index: 20 !important;
     /* text-shadow: 2px 2px 4px  rgba(187, 130, 44, 0.925);
     */
+   
+
+    width: 100%;
+    
+    
 }
 .noti,.search {
     text-align: center;
@@ -128,6 +134,54 @@ a.nav-links-mobile {
     vertical-align: top;
 
   }
+
+  /* .dropadmin .btn {
+    color: rgb(255, 255, 255);
+    background-color: rgba(46, 46, 45, 0.753);
+    padding: 5px 15px;
+    font-size: 15px;
+
+    border-radius: 35px;
+  } */
+
+  .dropadmin  .nav-links-mobile {
+    color: white;
+    text-decoration: none;
+    padding: 0rem 0rem;
+    
+}
+
+.dropadmin .btn-primary {
+    padding: 5px 15px;
+    font-size: 15px;
+    border-radius: 35px;
+    color: #fff;
+    background-color: #202224;
+    border-color: #f2f4f7;
+}
+
+.dropadmin .btn-primary:hover {
+    background-color: #4c4e50;
+    border-color: #f2f4f7;
+}
+.dropadmin .dropdown-menu {
+
+    width: 150px;
+    padding: 15px
+}
+.dataadmin {
+    color: #7c580b;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+
+}
+
+
+
+
  @media screen and (max-width: 1024px) {
     .NavbarItems {
         /* position: relative; */

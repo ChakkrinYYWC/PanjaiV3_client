@@ -41,29 +41,12 @@ class tutorial extends Component {
               <img className="pic-tutorial" src="/tutorial-6.png" />
               <p>6. เลือกจำนวนเหรียญที่ต้องการบริจาค</p>
             </div>
-            {/* <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial-7.png" />
-              <p>7.เมื่อเหรียญไม่พอ จะไม่สามารถบริจาคได้</p>
-            </div>
-            <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial-8.png" />
-              <p>
-                8. เติมเหรียญเข้าสู่เว็บปันใจ <br />{" "}
-                เลือกจำนวนเหรียญที่ต้องการเติมเงิน
-              </p>
-            </div>
-            <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial-9.png" />
-              <p>
-                9. ผูกบัตรเครดิตหรือเดบิต <br />
-                เพื่อเติมเงินเข้าสู่เว็บปันใจ
-              </p>
-            </div> */}
+            
           </div>
 
           {/* บริจาคสิ่งของมูลนิธิ */}
           <div className="topic-tutorial-1">
-            <p>2. วิธีการบริจาคสิ่งของและเงินให้กับม฿ลนิธิต่าง ๆ </p>
+            <p>2. วิธีการบริจาคสิ่งของและเงินให้กับมูลนิธิต่าง ๆ </p>
           </div>
           <div class="grid-container-tutorial">
             <div class="grid-item-tutorial">
@@ -79,14 +62,14 @@ class tutorial extends Component {
               <p>3. เลือกมูลนิธิที่ต้องการบริจาค</p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-4.png" />
+              <img className="pic-tutorial" src="/tutorial-4.png" />
               <p>
                 4.รายละเอียดของมูลนิธิ <br />
                 และมีแผนที่ดูที่ตั้งของมูลนิธิ{" "}
               </p>
             </div>
             <div class="grid-item-tutorial">
-              <img className="pic-tutorial" src="/tutorial1-5.png" />
+              <img className="pic-tutorial" src="/tutorial1-4.png" />
               <p>5. กดปุ่มบริจาค เพื่อบริจาคเงิน</p>
             </div>
             <div class="grid-item-tutorial">
@@ -94,9 +77,34 @@ class tutorial extends Component {
               <p>6. เลือกจำนวนเหรียญที่ต้องการบริจาค</p>
             </div>
             </div>
-{/* ตู้ปันใจ */}
+{/* เติมเงิน */}
             <div className="topic-tutorial-1">
-            <p>2. วิธีการบริจาคสิ่งของและเงินให้กับม฿ลนิธิต่าง ๆ </p>
+            <p>3. วิธีการเติมเงินเพื่อบริจาค </p>
+          </div>
+          <div class="grid-container-tutorial">
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial2-1.png" />
+              <p>1. ไปที่หน้าข้อมูลส่วนตัว และกดเติมเหรียญ</p>
+            </div>
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial2-2.png" />
+              <p>2. กดเลือกจำนวนเหรียญที่ต้องการเติม</p>
+            </div>
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial2-3.png" />
+              <p>3. ใส่เลขบัตรเดบิตหรือเครดิตเพื่อเติมเงิน</p>
+            </div>
+            <div class="grid-item-tutorial">
+              <img className="pic-tutorial" src="/tutorial2-4.png" />
+              <p>
+                4.สามารถดูได้ว่ายอดเงินคงเหลือเท่าไหร่
+              </p>
+            </div>
+            
+        </div>
+         {/* บริจาคสิ่งของมูลนิธิ */}
+         <div className="topic-tutorial-1">
+            <p>2. วิธีการบริจาคสิ่งของและเงินให้กับมูลนิธิต่าง ๆ </p>
           </div>
           <div class="grid-container-tutorial">
             <div class="grid-item-tutorial">
@@ -115,7 +123,7 @@ class tutorial extends Component {
               <img className="pic-tutorial" src="/tutorial1-4.png" />
               <p>
                 4.รายละเอียดของมูลนิธิ <br />
-                และมีแผนที่ดูที่ตั้งของมูลนิธิ{" "}
+                และมีแผนที่ดูที่ตั้งของมูลนิธิ
               </p>
             </div>
             <div class="grid-item-tutorial">
@@ -126,7 +134,7 @@ class tutorial extends Component {
               <img className="pic-tutorial" src="/tutorial1-6.png" />
               <p>6. เลือกจำนวนเหรียญที่ต้องการบริจาค</p>
             </div>
-        </div>
+            </div>
       </div>
       </div>
     );

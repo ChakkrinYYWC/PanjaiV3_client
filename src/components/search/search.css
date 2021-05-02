@@ -2,7 +2,9 @@
     padding: 5% 3% 5% 3%;
     /* font-family: 'Mali', cursive; */
 }
-
+.img101{
+  border-radius: 0px 0px 0px 0px;
+}
 .ui-input{
     width: 50%;
     height: auto;
@@ -24,37 +26,7 @@
     background-color: rgb(95, 74, 32);
     font-size: 20px;
 }
-/* .check1{
-    margin-right:200px;
-  
-}
-.check2{
-    margin-right: 200px;
-} */
-/* .check3{
-  
-} */
 
-
-/* .check1 h2 {
-    font-size: 25px;
-    margin: 0px; 
-    text-align: center;
-    font-family: 'Mali', cursive;
-    font-weight: bold;
-    color: rgb(151, 114, 85);
-    
-} */
-
-/* .check2 h2 {
-    font-size: 25px;
-    margin: 0px; 
-    text-align: center;
-    font-family: 'Mali', cursive;
-    font-weight: bold;
-    color: rgb(151, 114, 85);
-    
-} */
 .check3 {
   font-size: 25px;
   padding-left: 70% ;  
@@ -64,17 +36,7 @@
   font-weight: bold;
   /* color: rgb(151, 114, 85); */
 }
-/* .MuiIconButton-label {
-  margin-left: 500px;
-} */
-/* .box1{
-    zoom: 140%;
-}
 
-.box2{
-    zoom: 140%;
-
-} */
 .box3{
   zoom: 140%;
 
@@ -173,8 +135,6 @@
     height: 60%;
     width: 100%;
     margin: 0;
-    
-  
   }
   
 
@@ -184,30 +144,56 @@
     height: 350px;
     text-align: center;
     border-radius:40px;
-    
     box-shadow: 1px 1px 1px 0px rgba(2, 1, 1, 0.555);
     margin: 40px;
   }
+
+ 
+
 
   .foundat Img{
     height: 180px;
     width:100%;
     border-radius:30px 30px 0  0;
- 
-
-
   }
 
-  .Tfound{
+ 
+
+  .foundat2{
+
+    text-align: center;
+    border-radius: 40px;
+    box-shadow: 1px 1px 1px 0px rgb(2 1 1 / 56%);
+    margin: 40px;
+  }
+
+  .foundat2 Img{
+    height: 180px;
+    width:100%;
+    border-radius:0px 0px 0  0;
+  }
+
+  .card-body {
+    flex: 1 1 auto;
+    /* padding-top: 1rem; */
+}
+
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+
+}
+  .Tfound1{
       font-size: 16px;
       color:rgba(41, 27, 27, 0.664);
       font-weight: bold;
-      text-align:right;
       text-decoration-line: none;
 
   }
 
-  .Tfound:hover{
+  .Tfound1:hover{
     color:rgba(41, 27, 27, 0.863);
     
   }
@@ -230,6 +216,22 @@
   }
  
   .foundat .CardTitle:hover{
+    font-size: 13.5px;
+    text-decoration-line: underline;
+  }
+
+  .foundat2 .CardTitle{
+    text-decoration-line: none;
+    font-size: 13px;
+    color:rgba(253, 253, 253, 0.925);
+    background-color: rgba(161, 128, 79, 0.925) ;
+    border-radius: 6px;
+    padding: 3px;
+
+
+  }
+ 
+  .foundat2 .CardTitle:hover{
     font-size: 13.5px;
     text-decoration-line: underline;
   }
@@ -286,14 +288,23 @@
     font-size: 0.8125rem;
     margin: 0px 7px 0 0;
 }
-.background-search {
+
+/* ////////////////////Background////////////////////////////////////// */
+
+/* {
   background-color:  rgb(226, 221, 204);
   position: absolute;
     width: 100%;
     height: 100%;
-  
+} */
+
+.background-search {
+background-color: rgb(255, 236, 179);
+height: 1500px;
 }
 
+
+/* //////////////////////////////////////////////////////////////////// */
 
 
 
@@ -301,6 +312,13 @@
 
   .bg2 .row {
     padding: 0% 10% 0% 2%;
+}
+
+.card-body{
+  padding: 0rem 0rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 10px;
 }
 
 
@@ -318,8 +336,14 @@
     padding: 0%;
 }
 
+.background-search {
+  height: 2000px;
+}
 
-
+.col-lg-4{
+  
+    padding-left: 7%;
+}
 
 
 }

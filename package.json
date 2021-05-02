@@ -24,6 +24,7 @@
     "mdb": "^0.1.0",
     "moment": "^2.29.1",
     "mongoose": "^5.12.7",
+    "nodemon": "^2.0.7",
     "payment": "^2.4.0",
     "promptpay-qr": "^0.4.4",
     "qrcode.react": "^1.0.1",
