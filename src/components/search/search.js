@@ -256,7 +256,7 @@ export default function Checkboxes({ ...props }) {
                   <div className="column col-4">
                     <Card className="foundat2">
                       <Card.Body>
-                        <center><Link className="Tfound1">{record.title}</Link></center>
+                        <div className="titletu">{record.title}</div >
                       </Card.Body>
 
                       <Grid container justify="center" >
@@ -275,9 +275,10 @@ export default function Checkboxes({ ...props }) {
                       </Grid>
                       <Card.Body>
                         {/* <Link className="Tfound">{record.title}</Link> */}
-                        <div className="information">จังหวัด :{record.location}</div>
-                        <div className="information">ผู้สร้าง :{record.creator}</div>
-                        <div className="information-1">วันที่ลง :{record.Timestamp}</div>
+                        <div className="information">ข้อมูล : {record.message}</div>
+                        <div className="information">จังหวัด : {record.location}</div>
+                        <div className="information">ผู้สร้าง : {record.creator}</div>
+                        <div className="information-1">วันที่ลง : {record.Timestamp}</div>
                         <div className="pum">
                           <If condition={currentUser == record.creator}>
                             <Then>
