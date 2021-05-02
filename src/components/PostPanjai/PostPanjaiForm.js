@@ -223,7 +223,12 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                         })
                     }
-                    <button type='button' onClick={() => onRemoveImg()}>Clear image</button>
+                    <Button>
+                        <IconButton color="#000000" onClick={() => onRemoveImg()}>
+                            <DeleteSweep />
+                        </IconButton>
+                    </Button>
+                    {/* <button type='button' onClick={() => onRemoveImg()}>Clear image</button> */}
                 </ImageWrapper>
             )
         }
