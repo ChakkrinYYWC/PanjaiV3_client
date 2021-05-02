@@ -53,7 +53,7 @@ function Popup({ classes, ...props }) {
                                     <div className="column col-xs-6 col-sm-6 col-md-6 col-lg-4">
                                         <Card className="foundat">
                                             {/* {console.log(record.Image[0])} */}
-                                            <Card.Img variant="top" src={'http://localhost:3001/Foundation/' + record.image[0]} />
+                                            <Card.Img variant="top" src={record.image[0]} />
                                             <Card.Body>
                                                 <Link to={"/Foundation/" + record.category + "/" + record._id} className="Tfound">{record.title}</Link>
                                                 <div className="information">ต้องการรับบริจาค : {record.item}</div>
