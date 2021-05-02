@@ -82,10 +82,11 @@ function SearchUser() {
                 <input type="text" className="ui-input" placeholder="ค้นหา"
                   onChange={(event) => {
                     setUserSearchInput(event.target.value)
+                    userSearch()
                   }} />
-                <button onClick={() => userSearch()} className="search-bt">
+                {/* <button onClick={() => userSearch()} className="search-bt">
                   ค้นหา
-                </button>
+                </button> */}
               </div><br />
               <div>
                 {
