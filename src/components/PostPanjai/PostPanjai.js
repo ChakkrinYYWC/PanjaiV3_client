@@ -1,6 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { connect } from "react-redux";
-import * as action from "../../action/postPanjai";
 import {
   Divider,
   Grid,
@@ -131,26 +129,14 @@ const PostPanjai = ({ classes, ...props }) => {
   const open = Boolean(anchorEl);
   var Array_image = [];
 
-  // async function onetime() {
-  //   if (once == false) {
-  //     await Axios.post('/search/getPieceAvailable/' + user_id, {
-  //     }).then(async res => {
-  //       await localStorage.setItem('pieceAvailable', res.data)
-  //     }).catch(error => console.log(error))
-  //     once = true
-  //   }
-  // }
-  // onetime()
 
   useEffect(() => {
-    console.log(props.fetchAllPostPanjai())
-    // Axios.get('/Too-Panjai/', {
-    // }).then(async res => {
-    //   await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
-    //   //console.log(res.data)
-    // }).catch(error => console.log(error))
 
-    props.fetchAllPostPanjai()
+    Axios.get('/Too-Panjai/', {
+    }).then(async res => {
+      await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+    }).catch(error => console.log(error))
+
     window.scrollTo({
       top: 0,
       left: 0,
@@ -159,6 +145,14 @@ const PostPanjai = ({ classes, ...props }) => {
   }, [])
 
   const onDelete = id => {
+
+    if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?')) {
+      Axios.delete('/Too-Panjai/' + id, {
+      }).then(async res => {
+        onSuccess()
+      }).catch(error => console.log(error))
+    }
+
     const onSuccess = () => {
       ButterToast.raise({
         content: <Cinnamon.Crisp title="ตู้ปันใจ"
@@ -167,9 +161,8 @@ const PostPanjai = ({ classes, ...props }) => {
           icon={<DeleteSweep />}
         />
       })
+      window.location.reload()
     }
-    if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?'))
-      props.deletePostMessage(id, onSuccess)
   }
 
   const ScrollToTop = id => {
@@ -181,27 +174,6 @@ const PostPanjai = ({ classes, ...props }) => {
     setCurrentId(id);
   }
 
-
-  const [select, setSelect] = React.useState('');
-
-  // const handleChange = (id, option) => {
-  //   console.log('*' + option)
-  //   console.log('*' + id)
-  //   //reportItem(id)
-  //   // }
-  //   setAnchorEl(null);
-  // };
-
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    console.log(event.currentTarget)
-  };
-
-  const handleClose = (event) => {
-    console.log(event)
-    setAnchorEl(null);
-  };
 
   const requestItem = (id) => {
     const data = { currentUser_id, currentUser };
@@ -215,12 +187,23 @@ const PostPanjai = ({ classes, ...props }) => {
         .catch((error) => console.log(error));
     }
   };
+  const onSuccessFav = () => {
+    ButterToast.raise({
+      content: <Cinnamon.Crisp title="ตู้ปันใจ"
+        content="คุณได้ถูกใจโพสต์นี้"
+        scheme={Cinnamon.Crisp.SCHEME_PURPLE}
+        icon={<AssignmentTurnedIn />} 
+      />
+    })
+    //window.location.reload()
+  }
 
   const favoriteItem = (id) => {
     const data = { currentUser_id, currentUser };
     Axios.post("/Too-Panjai/addFav/" + id, data, {})
       .then((res) => {
         console.log(res);
+        onSuccessFav()
       })
       .catch((error) => console.log(error));
   };
@@ -237,23 +220,10 @@ const PostPanjai = ({ classes, ...props }) => {
     }
   };
 
-  // props.postPanjaiList.sort((a, b) => (a._id > b._id ? -1 : 1)); //sortdata
-  
-
-
-  // const urlArray = [
-  //     "https://dj.lnwfile.com/k5jt1b.jpg",
-  //     "https://gc.lnwfile.com/hlwt5d.jpg",
-  //     "https://pbs.twimg.com/media/DbZSHVNVQAceHgM.jpg",
-  //     "http://localhost:3001/image/image-1619203503293.jpg"
-  // ]
-  // data.map(record => console.log(record))
 
   return (
     <>
-      {/* <Slideshow data={urlArray} /> */}
-      {/* กรอบโพส */}
-      {/* <Box bgcolor="primary.main" color="primary.contrastText" p={2}> */}
+
       <PostWrapper>
         <Paper className={`${classes.post1} ${classes.bg}`}>
           <PostPanjaiForm {...{ currentId, setCurrentId }} />
@@ -285,14 +255,6 @@ const PostPanjai = ({ classes, ...props }) => {
 
                         {currentUser !== record.creator && (
                           <Grid item sm={4} className={classes.judjudjud}>
-                            {/* <IconButton
-                              aria-label="more"
-                              aria-controls="long-menu"
-                              aria-haspopup="true"
-                              onClick={handleClick}
-                            >
-                              <MoreVertIcon />
-                            </IconButton> */}
                             <div className="reportpost-button">
                               <DropdownButton id="dropdown-item-button " title="" >
                                 <span className="reportpost">
@@ -416,20 +378,7 @@ const PostPanjai = ({ classes, ...props }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  postPanjaiList: state.postPanjai.list,
-});
-
-const mapActionToProps = {
-  fetchAllPostPanjai: action.fetchAll,
-  deletePostMessage: action.Delete,
-  createPostPanjai: action.create,
-};
-
-export default connect(
-  mapStateToProps,
-  mapActionToProps
-)(withStyles(styles)(PostPanjai));
+export default (withStyles(styles)(PostPanjai));
 
 const PostWrapper = styled.div`
   >*{

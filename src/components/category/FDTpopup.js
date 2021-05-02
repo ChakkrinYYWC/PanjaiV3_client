@@ -1,8 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import './FDTpopup.css'
 import { Card, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import * as action from '../../action/postFDT'
 import moment from 'moment';
 import Axios from 'axios';
 

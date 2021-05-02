@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import useForm from "../PostPanjai/useForm";
-import * as actions from "../../action/postFDT";
-import { connect } from "react-redux";
 import {
     withStyles, Typography, IconButton, Button,
     TextField, MenuItem, FormControl, InputLabel,
@@ -23,6 +21,8 @@ import {
 } from '@material-ui/pickers';
 import { data } from 'jquery';
 import { tag } from "../../Constants/provinces";
+import Axios from 'axios'
+
 
 const defaultImageSrc = '/image.png'
 
@@ -35,7 +35,6 @@ const initialFieldValues = {
     item3: '',
     n_item: '',
     category: '',
-    // promptpay: '',
     endtime: '',
     lat: '',
     lng: '',
@@ -127,10 +126,6 @@ const styles = theme => ({
         padding: "0 55px 0 0",
         margin: "0 0 10px 0"
     },
-    // promptpay: {
-    //     padding: "0 40px 0 0",
-    //     margin: "0 0 10px 0"
-    // },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -161,19 +156,30 @@ const PostFDT = ({ classes, ...props }) => {
 
     const [multi_image, setMulti_image] = useState([]);
     const arr = []
+    const [data, setdata] = useState([]);
 
-    // const [{ alt, src }, setImg] = useState({
-    //     src: defaultImageSrc,
-    //     alt: 'Upload an Image'
-    // });
 
-    useEffect(() => {
-        if (props.current != 0) {
-            setValues({
-                ...props.postFDTList.find(x => x._id == props.current)
-            })
-            setErrors({})
-        }
+    useEffect(async () => {
+
+        await Axios.get('/Foundation/getid/' + props.current, {
+        }).then(async res => {
+            if (props.current != 0) {
+                setValues({
+                    title: res.data.title,
+                    message: res.data.message,
+                    item: res.data.item,
+                    n_item: res.data.n_item,
+                    lat: res.data.lat,
+                    lng: res.data.lng,
+                    address: res.data.address,
+                    phone: res.data.phone,
+                    endtime: res.data.endtime
+                })
+                setErrors({})
+            }
+
+        }).catch(error => console.log(error))
+
     }, [props.current])
 
     const validate = () => {
@@ -181,16 +187,12 @@ const PostFDT = ({ classes, ...props }) => {
         temp.title = values.title ? "" : "กรุณาใส่ข้อมูล."
         temp.message = values.message ? "" : "กรุณาใส่ข้อมูล."
         temp.item1 = values.item1 ? "" : "กรุณาใส่ข้อมูล."
-        // temp.item2 = values.item2 ? "" : "กรุณาใส่ข้อมูล."
-        // temp.item3 = values.item3 ? "" : "กรุณาใส่ข้อมูล."
         temp.n_item = values.n_item ? "" : "กรุณาใส่ข้อมูล."
         temp.lat = values.lat ? "" : "กรุณาใส่ข้อมูล."
         temp.lng = values.lng ? "" : "กรุณาใส่ข้อมูล."
         temp.address = values.address ? "" : "กรุณาใส่ข้อมูล."
         temp.phone = values.phone ? "" : "กรุณาใส่ข้อมูล."
-        //temp.endtime = values.endtime ? "" : "กรุณาใส่ข้อมูล."
         temp.category = values.category ? "" : "กรุณาใส่ข้อมูล."
-        // temp.promptpay = values.promptpay ? "" : "กรุณาใส่ข้อมูล."
         setErrors({
             ...temp
         })
@@ -260,12 +262,15 @@ const PostFDT = ({ classes, ...props }) => {
             })
             resetFormFDT()
             setMulti_image([])
+            window.location.reload()
         }
+
         console.log(validate())
         console.log(props.current)
         if (validate() && props.current == 0) {
+
             if (props.current == 0) {
-                console.log('***')
+
                 const formData = new FormData();
 
                 for (let i = 0; i < file.length; i++) {
@@ -281,17 +286,22 @@ const PostFDT = ({ classes, ...props }) => {
                 formData.append('address', values.address);
                 formData.append('phone', values.phone);
                 formData.append('category', values.category);
-                // formData.append('category', category);
-                // formData.append('promptpay', values.promptpay);
                 formData.append('endtime', values.endtime);
                 formData.append('lat', values.lat);
                 formData.append('lng', values.lng);
 
-                props.createPostFDT(formData, onSuccess) //ส่งค่าไปserver
+                Axios.post('/Foundation/', formData, {
+                }).then(async res => {
+                    onSuccess()
+                    console.log(res.data)
+                }).catch(error => console.log(error))
             }
         } else if (props.current != 0) {
-            console.log(values)
-            props.updatePostFDT(props.current, values, onSuccess)
+            //console.log(values)
+            Axios.put('/Foundation/' + props.current, values, {
+            }).then(async res => {
+                onSuccess()
+            }).catch(error => console.log(error))
         }
 
     }
@@ -414,16 +424,6 @@ const PostFDT = ({ classes, ...props }) => {
                         onChange={handleInputChange}
                         {...(errors.phone && { error: true, helperText: errors.phone })}
                     /><br />
-                    {/* <TextField
-                        id="standard-basic"
-                        name="promptpay"
-                        type="number"
-                        className={classes.promptpay}
-                        label="พร้อมเพย์"
-                        value={values.promptpay}
-                        onChange={handleInputChange}
-                        {...(errors.promptpay && { error: true, helperText: errors.promptpay })}
-                    /> */}
 
                     <FormControl className={classes.formControl}>
                         <InputLabel >หมวดหมู่</InputLabel>
@@ -573,31 +573,6 @@ const PostFDT = ({ classes, ...props }) => {
                         onChange={handleInputChange}
                         {...(errors.phone && { error: true, helperText: errors.phone })}
                     /><br />
-                    {/* <TextField
-                        id="standard-basic"
-                        name="promptpay"
-                        type="number"
-                        className={classes.promptpay}
-                        label="พร้อมเพย์"
-                        value={values.promptpay}
-                        onChange={handleInputChange}
-                        {...(errors.promptpay && { error: true, helperText: errors.promptpay })}
-                    /><br /> */}
-                    {/* <input
-                        accept="image/*"
-                        className={classes.input}
-                        id="icon-button-file"
-                        type="file"
-                        onChange={showPreview}
-                    />
-                    <label htmlFor="icon-button-file">
-                        <IconButton color="primary" aria-label="upload picture" component="span">
-                            <PhotoCamera />
-                        </IconButton>
-                    </label>
-                    <div>
-                        <img src={src} alt={alt} className={classes.imgpreview} />
-                    </div> */}
 
 
 
@@ -649,13 +624,4 @@ const PostFDT = ({ classes, ...props }) => {
     }
 }
 
-const mapStateToProps = state => ({
-    postFDTList: state.postFDT.list
-})
-
-const mapActionToProps = {
-    createPostFDT: actions.create,
-    updatePostFDT: actions.update
-}
-
-export default connect(mapStateToProps, mapActionToProps)(withStyles(styles)(PostFDT));
+export default (withStyles(styles)(PostFDT));

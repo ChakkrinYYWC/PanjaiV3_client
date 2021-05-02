@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './category.css'
 import './categoryshow.css'
-import { connect } from 'react-redux';
-import * as action from '../../action/postFDT'
 import moment from 'moment';
 import Form from './Form'
 import Button from '@material-ui/core/Button';
@@ -76,11 +74,20 @@ function Categoryshow({ classes, ...props }) {
     const [lat, setLat] = useState();
     const [lng, setLng] = useState();
     const [name, setName] = useState();
+    const [dataFDT, setdataFDT] = useState([])
+
     var Array_image = [];
 
     useEffect(() => {
-        props.fetchAllPostFDT()
+
+        Axios.get('/Foundation/getid/' + props.currentId.match.params.id, {
+        }).then(async res => {
+            await setdataFDT(res.data)
+            // await setdataFDT(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
+        }).catch(error => console.log(error))
+        //props.fetchAllPostFDT()
     }, [])
+
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -100,7 +107,6 @@ function Categoryshow({ classes, ...props }) {
     };
 
     const handleClickOpenMap = (e) => {
-        console.log('****')
         const data = { data: props.currentId.match.params.id }
         Axios.post('/Foundation/map', data, {
         }).then(res => {
@@ -125,10 +131,14 @@ function Categoryshow({ classes, ...props }) {
                     icon={<DeleteSweep />}
                 />
             })
+
+            window.location.href = "/Foundation/" + props.currentId.match.params.name
         }
         if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?')) {
-            props.deletePostMessage(id, onSuccess)
-            window.location.href = "/Foundation/" + props.currentId.match.params.name
+            Axios.delete('/Foundation/' + id, {
+            }).then(async res => {
+              onSuccess()
+            }).catch(error => console.log(error))
         }
     }
 
@@ -158,390 +168,288 @@ function Categoryshow({ classes, ...props }) {
         </GoogleMap>
     );
 
-    console.log(props)
-
     return (
-
         <>
-            {
-                props.postFDTList.filter(fdt => fdt._id == props.currentId.match.params.id).map((record, index) => {
-                    return (
-                        <>
-                            <div className="postfdt">
-                                <If condition={currentUser == 'admin'}>
+            <div className="postfdt">
+                <If condition={currentUser == 'admin'}>
 
-                                    <Then>
-                                        <div className="box-box">
+                    <Then>
+                        <div className="box-box">
 
-                                            <Fab className="botton" size="small" color="back" aria-label="edit" onClick={() => handleClickOpenFDT(record._id)} >
-                                                <EditOutlinedIcon />
-                                            </Fab>
+                            <Fab className="botton" size="small" color="back" aria-label="edit" onClick={() => handleClickOpenFDT(dataFDT._id)} >
+                                <EditOutlinedIcon />
+                            </Fab>
 
-                                            <Dialog
-                                                onClose={handleCloseFDT}
-                                                aria-labelledby="customized-dialog-title"
-                                                open={open2}
-                                            >
-                                                <DialogTitle2 id="customized-dialog-title" onClose={handleCloseFDT}>
-                                                    แก้ไขข้อมูลโครงการ
-                                                </DialogTitle2>
+                            <Dialog
+                                onClose={handleCloseFDT}
+                                aria-labelledby="customized-dialog-title"
+                                open={open2}
+                            >
+                                <DialogTitle2 id="customized-dialog-title" onClose={handleCloseFDT}>
+                                    แก้ไขข้อมูลโครงการ
+                                </DialogTitle2>
 
-                                                <PostFDT {...{ current, setCurrent }} />
-                                                <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-                                            </Dialog>
+                                <PostFDT {...{ current, setCurrent }} />
+                                <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+                            </Dialog>
 
 
-                                            <Fab className="botton" size="small" color="back" aria-label="add" onClick={() => onDelete(record._id)} >
-                                                <DeleteOutlineRoundedIcon />
-                                            </Fab>
-                                            <center>
-                                                <div className="btcate">
-                                                    <ButtonGroup variant="text" aria-label="text primary button group">
-                                                        <Button href="/Foundation/เด็กและเยาวชน">เด็กและเยาวชน</Button>
-                                                        <Button href="/Foundation/ผู้สูงอายุ">ผู้สูงอายุ</Button>
-                                                        <Button href="/Foundation/สัตว์">สัตว์</Button>
-                                                        <Button href="/Foundation/ผู้พิการและผู้ป่วย">ผู้พิการและผู้ป่วย</Button>
-                                                        <Button href="/Foundation/สิ่งแวดล้อม">สิ่งแวดล้อม</Button>
-                                                        <Button href="/Foundation/อื่นๆ">อื่นๆ</Button>
-                                                    </ButtonGroup>
-                                                </div>
+                            <Fab className="botton" size="small" color="back" aria-label="add" onClick={() => onDelete(dataFDT._id)} >
+                                <DeleteOutlineRoundedIcon />
+                            </Fab>
+                            <center>
+                                <div className="btcate">
+                                    <ButtonGroup variant="text" aria-label="text primary button group">
+                                        <Button href="/Foundation/เด็กและเยาวชน">เด็กและเยาวชน</Button>
+                                        <Button href="/Foundation/ผู้สูงอายุ">ผู้สูงอายุ</Button>
+                                        <Button href="/Foundation/สัตว์">สัตว์</Button>
+                                        <Button href="/Foundation/ผู้พิการและผู้ป่วย">ผู้พิการและผู้ป่วย</Button>
+                                        <Button href="/Foundation/สิ่งแวดล้อม">สิ่งแวดล้อม</Button>
+                                        <Button href="/Foundation/อื่นๆ">อื่นๆ</Button>
+                                    </ButtonGroup>
+                                </div>
 
-                                            </center>
-                                            <div className="Tt">{record.title}</div>
-                                            <center>
-                                                < Grid container justify="center">
-                                                    <SlideShow className="imageslide"
-                                                        images={record.image}
+                            </center>
+                            <div className="Tt">{dataFDT.title}</div>
+                            <center>
+                                < Grid container justify="center">
+                                    <SlideShow className="imageslide"
+                                        images={dataFDT.image}
 
-                                                        imagesWidth="600px"
-                                                        imagesHeight="400px"
-                                                        imagesHeightMobile="36vw"
+                                        imagesWidth="600px"
+                                        imagesHeight="400px"
+                                        imagesHeightMobile="36vw"
 
-                                                        thumbnailsWidth="920px"
-                                                        thumbnailsHeight="12vw"
+                                        thumbnailsWidth="920px"
+                                        thumbnailsHeight="12vw"
 
-                                                        indicators thumbnails fixedImagesHeight
-                                                    />
-                                                </Grid>
-                                                {/* <div className="image01"> */}
+                                        indicators thumbnails fixedImagesHeight
+                                    />
+                                </Grid>
+                                {/* <div className="image01"> */}
 
-                                                {/* {
-                                                    Array_image = [],
-                                                    record.image.map((image, index) => {
-                                                        <Slideshow src={'http://localhost:3001/Foundation/' + image} />
-                                                         <img variant="top" src={'http://localhost:3001/Foundation/' + image} /> //multi image
-                                                        Array_image.push('http://localhost:3001/Foundation/image/' + image)
-                                                     }),
-                                                    
-                                                     < Grid container justify="center">
-                                                     <SlideShow className="imageslide"
-                                                         images={Array_image}
-                                                     
-                                                         width="400px"
-                                                         imagesWidth="400px"
-                                                         imagesHeight="200px"
-                                                         imagesHeightMobile="56vw"
-                                                         thumbnailsWidth="520px"
-                                                         thumbnailsHeight="12vw"
-                                                         
-                                                         indicators thumbnails fixedImagesHeight
-                                                     />
-                                                 </Grid>
-                                                     <img variant="top" src={'http://localhost:3001/Foundation/' + record.image} /> 
-                                                
-                                                 } */}
-
-                                            </center>
-                                            <div className="map">
-                                                <center>
-                                                    <Button className="map" variant="contained" onClick={() => handleClickOpenMap(record.title)} >
-                                                        แผนที่
+                            </center>
+                            <div className="map">
+                                <center>
+                                    <Button className="map" variant="contained" onClick={() => handleClickOpenMap(dataFDT.title)} >
+                                        แผนที่
                                                     </Button>
-                                                </center>
-                                            </div>
-
-                                            <Dialog className="ap"
-                                                // fullScreen={fullScreen}
-                                                onClose={handleCloseMap}
-                                                aria-labelledby="customized-dialog-title"
-                                                open={open3}
-                                            >
-                                                <div className="pagemap">
-                                                    <DialogTitle id="customized-dialog-title" onClose={handleCloseMap} fullScreen={fullScreen} >
-                                                        แผนที่{record.title}
-                                                    </DialogTitle>
-
-                                                    <DialogContent>
-                                                        <DialogContentText>
-                                                            <MapWithAMarker
-                                                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8YoATcEUeQOTMNL6a0V3gDas0yFDV-rg&v=3.exp&libraries=geometry,drawing,places"
-                                                                loadingElement={<div style={{ height: `100%` }} />}
-                                                                containerElement={<div style={{ height: `400px` }} />}
-                                                                mapElement={<div style={{ height: `100%` }} />}
-                                                            />
-                                                        </DialogContentText>
-                                                    </DialogContent>
-
-                                                    <DialogActions>
-                                                        <Button onClick={handleCloseMap} color="primary">
-                                                            ยกเลิก
-                                                    </Button>
-                                                    </DialogActions>
-                                                </div>
-                                            </Dialog>
-                                            <div className="info">{record.message}</div>
-                                            <center><h1 className="totaldonate">ยอดเงินบริจาค : {new Intl.NumberFormat().format(record.money)} บาท </h1> </center>
-                                            <div className="bx">
-                                                <div className="logo" ><i className="fab fa-gratipay"></i></div>
-                                                <div className="infor">สิ่งของที่ต้องการ : {record.item} </div>
-                                                <div className="infor">จำนวน : {record.n_item} บาท</div>
-                                                <div className="infor">ที่อยู่ : {record.address}</div>
-                                                <div className="infor">เบอร์โทรศัพท์ : {record.phone} </div>
-                                                <div className="infor">วันที่ลง : {moment(record.Timestamp).calendar()}</div>
-                                                {/* <div className="infor">วันสิ้นสุดโครงการ : {moment(record.endtime).calendar()}</div> */}
-                                                {/* <div className="infor">วันที่สิ้นสุดโครงการ : {record.endtime}</div> */}
-                                                <div className="infor">วันสิ้นสุดโครงการ : {moment(record.endtime).format('L')}</div>
-                                            </div>
-                                            <center><Button variant="contained" onClick={handleClickOpen}>
-                                                บริจาค
-                                            </Button></center>
-
-                                            <Dialog
-                                                // fullScreen={fullScreen}
-                                                open={open}
-                                                onClose={handleClose}
-                                                aria-labelledby="responsive-dialog-title"
-                                            >
-                                                <div className="popupdonate">
-                                                    <div className="namefdt">
-                                                        <DialogTitle id="responsive-dialog-title">บริจาคให้กับ {record.title}</DialogTitle>
-                                                    </div>
-                                                    <DialogContent>
-                                                        <DialogContentText>
-                                                            <Form {...record} />
-                                                            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-                                                        </DialogContentText>
-                                                    </DialogContent>
-
-                                                    <DialogActions>
-                                                        <Button onClick={handleClose} color="primary">
-                                                            ยกเลิก
-                                                    </Button>
-                                                    </DialogActions>
-                                                </div>
-                                            </Dialog>
-                                        </div>
-                                    </Then>
-
-
-
-
-
-
-
-
-
-                                    <Else>
-                                        <div className="box-box">
-
-                                            <center>
-                                                <div className="btcate">
-
-                                                    <ButtonGroup variant="text" aria-label="text primary button group">
-                                                        <Button href="/Foundation/เด็กและเยาวชน">เด็กและเยาวชน</Button>
-                                                        <Button href="/Foundation/ผู้สูงอายุ">ผู้สูงอายุ</Button>
-                                                        <Button href="/Foundation/สัตว์">สัตว์</Button>
-                                                        <Button href="/Foundation/ผู้พิการและผู้ป่วย">ผู้พิการและผู้ป่วย</Button>
-                                                        <Button href="/Foundation/สิ่งแวดล้อม">สิ่งแวดล้อม</Button>
-                                                        <Button href="/Foundation/อื่นๆ">อื่นๆ</Button>
-                                                    </ButtonGroup>
-                                                </div>
-
-                                            </center>
-
-                                            <div className="Tt">{record.title}</div>
-
-                                            <center>
-
-                                                {
-                                                    Array_image = [],
-                                                    record.image.map((image, index) => {
-                                                        Array_image.push('http://localhost:3001/Foundation/' + image)
-                                                    }),
-                                                    < Grid container justify="center">
-                                                        <SlideShow className="imageslide"
-                                                            images={Array_image}
-
-                                                            imagesWidth="600px"
-                                                            imagesHeight="400px"
-                                                            imagesHeightMobile="36vw"
-
-                                                            thumbnailsWidth="920px"
-                                                            thumbnailsHeight="12vw"
-
-                                                            indicators thumbnails fixedImagesHeight
-                                                        />
-                                                    </Grid>
-                                                }
-                                                {/* <div className="image01">
-                                                    <img variant="top" src={'http://localhost:3001/Foundation/' + record.image} />
-                                                </div> */}
-                                            </center>
-
-                                            <div className="map">
-                                                <center>
-                                                    <Button className="map" onClick={handleClickOpenMap} variant="contained" >
-                                                        แผนที่
-                                                    </Button>
-                                                </center>
-                                            </div>
-                                            <Dialog className="ap"
-                                                // fullScreen={fullScreen}
-                                                onClose={handleCloseMap}
-                                                aria-labelledby="customized-dialog-title"
-                                                open={open3}
-                                            >
-                                                <div className="pagemap">
-                                                    <DialogTitle id="customized-dialog-title" onClose={handleCloseMap}>
-                                                        แผนที่{record.title}
-                                                    </DialogTitle>
-
-                                                    <DialogContent>
-                                                        <DialogContentText>
-                                                            <MapWithAMarker
-                                                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8YoATcEUeQOTMNL6a0V3gDas0yFDV-rg&v=3.exp&libraries=geometry,drawing,places"
-                                                                loadingElement={<div style={{ height: `100%` }} />}
-                                                                containerElement={<div style={{ height: `400px` }} />}
-                                                                mapElement={<div style={{ height: `100%` }} />}
-                                                            />
-                                                        </DialogContentText>
-                                                    </DialogContent>
-
-                                                    <DialogActions>
-                                                        <Button onClick={handleCloseMap} color="primary">
-                                                            ยกเลิก
-                                                    </Button>
-                                                    </DialogActions>
-                                                </div>
-                                            </Dialog>
-
-                                            <div className="info">{record.message}</div>
-                                            <center><h1 className="totaldonate">ยอดเงินบริจาค : {new Intl.NumberFormat().format(record.money)} บาท</h1> </center>
-                                            <div className="bx">
-
-                                                <div className="logo" ><i className="fab fa-gratipay"></i></div>
-                                                <div className="infor">สิ่งของที่ต้องการ : {record.item}</div>
-                                                <div className="infor">จำนวน : {record.n_item} บาท</div>
-                                                <div className="infor">ที่อยู่ : {record.address}</div>
-                                                <div className="infor">เบอร์โทรศัพท์ : {record.phone} </div>
-                                                <div className="infor">วันที่ลง : {moment(record.Timestamp).calendar()}</div>
-                                                {/* <div className="infor">วันสิ้นสุดโครงการ : {moment(record.endtime).calendar()}</div> */}
-                                                <div className="infor">วันสิ้นสุดโครงการ : {moment(record.endtime).format('L')}</div>
-                                            </div>
-                                            <center >
-
-                                                <Button variant="contained" onClick={handleClickOpen}>
-                                                    บริจาค
-                                                </Button>
-
-                                            </center>
-
-                                            <Dialog
-                                                // fullScreen={fullScreen}
-                                                open={open}
-                                                onClose={handleClose}
-                                                aria-labelledby="responsive-dialog-title"
-                                            >
-                                                <div className="popupdonate">
-                                                    <div classname="namefdt">
-                                                        <DialogTitle id="responsive-dialog-title">บริจาคให้กับ {record.title}</DialogTitle>
-                                                    </div>
-                                                    <DialogContent>
-                                                        <DialogContentText>
-                                                            <Form {...record} />
-                                                            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
-                                                        </DialogContentText>
-                                                    </DialogContent>
-
-                                                    <DialogActions>
-                                                        <Button onClick={handleClose} color="primary">
-                                                            ยกเลิก
-                                                    </Button>
-                                                    </DialogActions>
-                                                </div>
-                                            </Dialog>
-                                        </div>
-                                    </Else>
-
-                                </If>
-                                {/* <footer id="sticky-footer" >
-                                    <div className="footer">
-
-                                        <div className="logofooter" ><i className="fab fa-gratipay"></i></div>
-                                        <Link to="/#001" className="textfooter">ปันใจ </Link>
-                                       
-                                    </div>
-                                </footer> */}
+                                </center>
                             </div>
 
-                        </>
-                    );
-                })
-            }
+                            <Dialog className="ap"
+                                // fullScreen={fullScreen}
+                                onClose={handleCloseMap}
+                                aria-labelledby="customized-dialog-title"
+                                open={open3}
+                            >
+                                <div className="pagemap">
+                                    <DialogTitle id="customized-dialog-title" onClose={handleCloseMap} fullScreen={fullScreen} >
+                                        แผนที่{dataFDT.title}
+                                    </DialogTitle>
+
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <MapWithAMarker
+                                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8YoATcEUeQOTMNL6a0V3gDas0yFDV-rg&v=3.exp&libraries=geometry,drawing,places"
+                                                loadingElement={<div style={{ height: `100%` }} />}
+                                                containerElement={<div style={{ height: `400px` }} />}
+                                                mapElement={<div style={{ height: `100%` }} />}
+                                            />
+                                        </DialogContentText>
+                                    </DialogContent>
+
+                                    <DialogActions>
+                                        <Button onClick={handleCloseMap} color="primary">
+                                            ยกเลิก
+                                                    </Button>
+                                    </DialogActions>
+                                </div>
+                            </Dialog>
+                            <div className="info">{dataFDT.message}</div>
+                            <center><h1 className="totaldonate">ยอดเงินบริจาค : {new Intl.NumberFormat().format(dataFDT.money)} บาท </h1> </center>
+                            <div className="bx">
+                                <div className="logo" ><i className="fab fa-gratipay"></i></div>
+                                <div className="infor">สิ่งของที่ต้องการ : {dataFDT.item} </div>
+                                <div className="infor">จำนวน : {dataFDT.n_item} บาท</div>
+                                <div className="infor">ที่อยู่ : {dataFDT.address}</div>
+                                <div className="infor">เบอร์โทรศัพท์ : {dataFDT.phone} </div>
+                                <div className="infor">วันที่ลง : {moment(dataFDT.Timestamp).calendar()}</div>
+                                {/* <div className="infor">วันสิ้นสุดโครงการ : {moment(dataFDT.endtime).calendar()}</div> */}
+                                {/* <div className="infor">วันที่สิ้นสุดโครงการ : {dataFDT.endtime}</div> */}
+                                <div className="infor">วันสิ้นสุดโครงการ : {moment(dataFDT.endtime).format('L')}</div>
+                            </div>
+                            <center><Button variant="contained" onClick={handleClickOpen}>
+                                บริจาค
+                                            </Button></center>
+
+                            <Dialog
+                                // fullScreen={fullScreen}
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="responsive-dialog-title"
+                            >
+                                <div className="popupdonate">
+                                    <div className="namefdt">
+                                        <DialogTitle id="responsive-dialog-title">บริจาคให้กับ {dataFDT.title}</DialogTitle>
+                                    </div>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <Form {...dataFDT} />
+                                            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+                                        </DialogContentText>
+                                    </DialogContent>
+
+                                    <DialogActions>
+                                        <Button onClick={handleClose} color="primary">
+                                            ยกเลิก
+                                        </Button>
+                                    </DialogActions>
+                                </div>
+                            </Dialog>
+                        </div>
+                    </Then>
+
+
+
+
+
+
+
+
+
+                    <Else>
+                        <div className="box-box">
+
+                            <center>
+                                <div className="btcate">
+
+                                    <ButtonGroup variant="text" aria-label="text primary button group">
+                                        <Button href="/Foundation/เด็กและเยาวชน">เด็กและเยาวชน</Button>
+                                        <Button href="/Foundation/ผู้สูงอายุ">ผู้สูงอายุ</Button>
+                                        <Button href="/Foundation/สัตว์">สัตว์</Button>
+                                        <Button href="/Foundation/ผู้พิการและผู้ป่วย">ผู้พิการและผู้ป่วย</Button>
+                                        <Button href="/Foundation/สิ่งแวดล้อม">สิ่งแวดล้อม</Button>
+                                        <Button href="/Foundation/อื่นๆ">อื่นๆ</Button>
+                                    </ButtonGroup>
+                                </div>
+
+                            </center>
+
+                            <div className="Tt">{dataFDT.title}</div>
+
+                            <center>
+
+                                < Grid container justify="center">
+                                    <SlideShow className="imageslide"
+                                        images={dataFDT.image}
+
+                                        imagesWidth="600px"
+                                        imagesHeight="400px"
+                                        imagesHeightMobile="36vw"
+
+                                        thumbnailsWidth="920px"
+                                        thumbnailsHeight="12vw"
+
+                                        indicators thumbnails fixedImagesHeight
+                                    />
+                                </Grid>
+                            </center>
+
+                            <div className="map">
+                                <center>
+                                    <Button className="map" onClick={handleClickOpenMap} variant="contained" >
+                                        แผนที่
+                                                    </Button>
+                                </center>
+                            </div>
+                            <Dialog className="ap"
+                                // fullScreen={fullScreen}
+                                onClose={handleCloseMap}
+                                aria-labelledby="customized-dialog-title"
+                                open={open3}
+                            >
+                                <div className="pagemap">
+                                    <DialogTitle id="customized-dialog-title" onClose={handleCloseMap}>
+                                        แผนที่{dataFDT.title}
+                                    </DialogTitle>
+
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <MapWithAMarker
+                                                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8YoATcEUeQOTMNL6a0V3gDas0yFDV-rg&v=3.exp&libraries=geometry,drawing,places"
+                                                loadingElement={<div style={{ height: `100%` }} />}
+                                                containerElement={<div style={{ height: `400px` }} />}
+                                                mapElement={<div style={{ height: `100%` }} />}
+                                            />
+                                        </DialogContentText>
+                                    </DialogContent>
+
+                                    <DialogActions>
+                                        <Button onClick={handleCloseMap} color="primary">
+                                            ยกเลิก
+                                                    </Button>
+                                    </DialogActions>
+                                </div>
+                            </Dialog>
+
+                            <div className="info">{dataFDT.message}</div>
+                            <center><h1 className="totaldonate">ยอดเงินบริจาค : {new Intl.NumberFormat().format(dataFDT.money)} บาท</h1> </center>
+                            <div className="bx">
+
+                                <div className="logo" ><i className="fab fa-gratipay"></i></div>
+                                <div className="infor">สิ่งของที่ต้องการ : {dataFDT.item}</div>
+                                <div className="infor">จำนวน : {dataFDT.n_item} บาท</div>
+                                <div className="infor">ที่อยู่ : {dataFDT.address}</div>
+                                <div className="infor">เบอร์โทรศัพท์ : {dataFDT.phone} </div>
+                                <div className="infor">วันที่ลง : {moment(dataFDT.Timestamp).calendar()}</div>
+                                {/* <div className="infor">วันสิ้นสุดโครงการ : {moment(datafdt.endtime).calendar()}</div> */}
+                                <div className="infor">วันสิ้นสุดโครงการ : {moment(dataFDT.endtime).format('L')}</div>
+                            </div>
+                            <center >
+
+                                <Button variant="contained" onClick={handleClickOpen}>
+                                    บริจาค
+                                                </Button>
+
+                            </center>
+
+                            <Dialog
+                                // fullScreen={fullScreen}
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="responsive-dialog-title"
+                            >
+                                <div className="popupdonate">
+                                    <div classname="namefdt">
+                                        <DialogTitle id="responsive-dialog-title">บริจาคให้กับ {dataFDT.title}</DialogTitle>
+                                    </div>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <Form {...dataFDT} />
+                                            <ButterToast position={{ vertical: POS_TOP, horizontal: POS_RIGHT }} />
+                                        </DialogContentText>
+                                    </DialogContent>
+
+                                    <DialogActions>
+                                        <Button onClick={handleClose} color="primary">
+                                            ยกเลิก
+                                                    </Button>
+                                    </DialogActions>
+                                </div>
+                            </Dialog>
+                        </div>
+                    </Else>
+
+                </If>
+
+            </div>
+
         </>
     );
 }
 
-const mapStateToProps = state => ({
-    postFDTList: state.postFDT.list
-})
-
-const mapActionToProps = {
-    fetchAllPostFDT: action.fetchAll,
-    deletePostMessage: action.Delete
-}
 
 
-export default connect(mapStateToProps, mapActionToProps)(Categoryshow);
-//export default Categoryshow;
-
-
-// import React from 'react';
-
-// function Map() {
-//     return (
-//         <>
-//             <h2>Hi</h2>
-//             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1mAA__Tql3SsFj9vR6dAMudAQlJ_KFj9J" width="640" height="480"></iframe>
-//         </>
-//     );
-// }
-// export default Map;
-
-// import React, { Component } from 'react';
-// import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow } from "react-google-maps";
-
-// function Map() {
-//     return (
-//         <GoogleMap
-//             defaultCenter={{ lat: 14.0135, lng: 100.5305 }}
-//             defaultZoom={10}
-//         />
-//     );
-// }
-
-// const WrappedMap = withScriptjs(withGoogleMap(Map));
-
-// export default function Categoryshow() {
-//     return (
-//         <div style={{ width: "100vw", height: "100vh" }}>
-//             <WrappedMap
-//                 googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyC8YoATcEUeQOTMNL6a0V3gDas0yFDV-rg`}
-//                 loadingElement={<div style={{ height: `100%` }} />}
-//                 containerElement={<div style={{ height: `100%` }} />}
-//                 mapElement={<div style={{ height: `100%` }} />}
-//             />
-//         </div>
-//     );
-// }
+export default Categoryshow;
 
