@@ -27,11 +27,10 @@
     
   }
   .pic-tutorial:hover {
+    
     transform: scale(3);
     cursor: pointer;
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
     
   }
   /* วิธีใช้ */
