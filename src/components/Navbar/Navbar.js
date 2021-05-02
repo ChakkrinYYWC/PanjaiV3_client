@@ -170,34 +170,28 @@ class Navbar extends Component {
             {currentUser != "admin" ? (
               <span></span>
             ) : (
-              <span class="drop">
-                <DropdownButton id="dropdown-item-button" title=" admin">
+              <span class="dropadmin">
+                <DropdownButton id="dropdown-item-button" title=" ADMIN">
                   <span className="lover">
                     <Dropdown.Item as="button">
-                      <div onClick={() => this.BlackListOn()} className="love">
+                      <div onClick={() => this.BlackListOn()} className="dataadmin">
                         <a>Blacklist</a>
                       </div>
                     </Dropdown.Item>
                     <Dropdown.Item as="button">
-                      <div onClick={() => this.UserOn()} className="love">
+                      <div onClick={() => this.UserOn()} className="dataadmin">
                         <a>User</a>
                       </div>
                     </Dropdown.Item>
                     <Dropdown.Item as="button">
-                      <div onClick={() => this.ReportOn()} className="love">
+                      <div onClick={() => this.ReportOn()} className="dataadmin">
                         <a>Report</a>
                       </div>
                     </Dropdown.Item>
                   </span>
                 </DropdownButton>
               </span>
-              // <span>
-              //   <div>
-              //     <button onClick={() => this.BlackListOn()} ><a>&nbsp;Blacklist&nbsp;</a></button>
-              //     <button><a>&nbsp;User&nbsp;</a></button>
-              //     <button><a>&nbsp;Report&nbsp;</a></button>
-              //   </div>
-              // </span>
+       
             )}
 
             {/* ================================================================================ */}
@@ -220,6 +214,8 @@ class Navbar extends Component {
               </If>
             </li>
           </ul>
+
+          
           <span className="dropdown position-search">
             <Link
               to="/searchResult"
