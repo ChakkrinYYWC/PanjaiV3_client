@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:3001/'
+const baseUrl = 'https://panjai-v-3-server-bwiid.ondigitalocean.app/'
 
 export default {
     postPanjai(url = baseUrl + 'Too-Panjai/') {
+        console.log(url)
         return {
             fetchAll: () => axios.get(url),
             fetchById: id => axios.get(url + id),
