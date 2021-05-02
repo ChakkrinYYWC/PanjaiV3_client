@@ -7,6 +7,7 @@ import { TextField, withStyles, Button } from "@material-ui/core";
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
+
 import loginImg from "../img/login.svg";
 import "./login.css";
 import { render } from 'react-dom';
@@ -74,7 +75,7 @@ function LoginFrom() {
             <div className="item2_log">
                 <h3>เข้าสู่ระบบ</h3><br />
                 <form>
-                    <div className="form-group">
+                    <div className="form-group1">
                         <label>ชื่อผู้ใช้:</label><br />
                         <input
                             type="text"
@@ -85,7 +86,7 @@ function LoginFrom() {
                         >
                         </input>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group1">
                         <label>รหัสผ่าน:</label><br />
                         <input
                             type="password"
@@ -96,16 +97,18 @@ function LoginFrom() {
                         >
                         </input>
                     </div>
-                    <div className="button-login">
-                        <button type='submit' className="btn btn-lg" onClick={uploadFile}>เข้าสู่ระบบ</button>
+                    <div className="button-login"> <br/>
+                       <center>  
+            
+             <Link to="/register" >สมัครสมาชิก</Link> | <button type='submit' className="btn btn" onClick={uploadFile}>เข้าสู่ระบบ</button></center>
                     </div>
                 </form>
-                <div>
+                {/* <div>
                     <br />
                     <h5>
-                        <a href="/Register">ลืมรหัสผ่าน</a> | <a href="/Register">สมัครสมาชิก</a>
+                        <a href="/Register">สมัครสมาชิก</a> 
                     </h5>
-                </div>
+                </div> */}
             </div>
         </div>
     )

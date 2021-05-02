@@ -38,6 +38,19 @@ function RegisterFrom() {
             window.alert('Confirm password incorrect!')
             //window.location.href = "http://localhost:3000/Login"
         }
+        else if (name == "" || username == "" || password == ""  || Email == "" 
+            ||address == "" || phone == "" )
+        {
+            window.alert('กรุณาใส่ข้อมูลให้ครบ')
+        }
+
+        else if ( file === undefined )
+        { 
+            window.alert('กรุณาใส่รูป')
+        }
+
+
+
         else {
             const formData = new FormData();
             formData.append('IDcard', file); // appending file
@@ -77,8 +90,9 @@ function RegisterFrom() {
             </div>
 
             <div className="item2_reg">
-                <h3>สมัครสมาชิก</h3>
-                <center><form>
+                <div className='btn22'>สมัครสมาชิก</div>
+
+                <form>
                     <div className="form-group">
                         <label>ชื่อ-นามสกุล:</label><br />
                         <input className='reg'
@@ -163,8 +177,8 @@ function RegisterFrom() {
                         />
                     </div>
 
-                    <div>
-                        <label>ภาพบัตรประจำตัวประชาชน: </label><br />
+                    <div className='ID_Card'>
+                        <label>ภาพบัตรประจำตัวประชาชน:&nbsp;&nbsp;</label>
                         <input className='reg'
                             type='file'
                             id='customFile'
@@ -175,10 +189,12 @@ function RegisterFrom() {
                     </div>
 
                     <br />
-                    <div>
+
+                    <div className='btn22'>
                         <button className="btn btn-lg " onClick={uploadFile}>สมัครสมาชิก</button>
                     </div>
-                </form></center>
+                
+                </form>
             </div>
         </div>
     )
