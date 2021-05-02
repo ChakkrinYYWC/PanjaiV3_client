@@ -199,10 +199,7 @@ export default function Checkboxes() {
 
                   <div className="column col-xs-6 col-sm-6 col-md-6 col-lg-4">
                     <Card className="foundat">
-                      <img
-                        variant="top"
-                        src={'http://localhost:3001/image/' + record.image}
-                      />
+                    <Card.Img variant="top" src={record.image[0]} />
                       <Card.Body>
                         <Link className="Tfound1">{record.title}</Link>
                         <div className="information">ต้องการรับบริจาค :{record.item}</div>
