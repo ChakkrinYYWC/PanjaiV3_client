@@ -5,8 +5,7 @@ import { Card } from "react-bootstrap";
 import Axios from 'axios';
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
 
-
-
+import moment from 'moment';
 import {
   BrowserRouter as Router,
   Route,
@@ -31,7 +30,7 @@ import SlideShow from "react-image-show";
 
 
 
-export default function Checkboxes() {
+export default function Checkboxes({ ...props }) {
   const [checked, setChecked] = React.useState(true);
   const [searchInput, setSearchInput] = useState("")
   const [checkMulaniti, SetCheckMulaniti] = useState(false);
@@ -39,6 +38,9 @@ export default function Checkboxes() {
   // const [checkfacebook, Setcheckfacebook] = useState(false);
   const [postTPJ, setPostTPJ] = useState([])
   const [postFDT, setPostFDT] = useState([])
+
+
+  // const data = { data: props.currentId.match.params.name }
 
   const Search = (event) => {
     event.preventDefault()
@@ -60,7 +62,7 @@ export default function Checkboxes() {
       paddingLeft: '24px',
       paddingRight: '24px',
       height: '5000px'
-  },
+    },
     paper: {
       margin: theme.spacing(3),
       padding: theme.spacing(2),
@@ -68,18 +70,18 @@ export default function Checkboxes() {
     smMargin: {
       "&:hover": {
         backgroundColor: "rgba(85, 52, 4, 0.925)",
-        
-        
+
+
       },
       margin: theme.spacing(1),
       background: "rgba(187, 130, 44, 0.925)",
-      
-      
+
+
     },
     smMargin1: {
       "&:hover": {
         backgroundColor: "rgba(85, 52, 4, 0.925)",
-        
+
       },
       margin: theme.spacing(1),
       background: "#a13800",
@@ -199,16 +201,16 @@ export default function Checkboxes() {
 
                   <div className="column col-xs-6 col-sm-6 col-md-6 col-lg-4">
                     <Card className="foundat">
-                      <img
-                        variant="top"
-                        src={'http://localhost:3001/image/' + record.image}
-                      />
+                      <Card.Img variant="top" src={record.image[0]} />
                       <Card.Body>
                         <Link className="Tfound1">{record.title}</Link>
-                        <div className="information">ต้องการรับบริจาค :{record.item}</div>
-                        <div className="information">จำนวน :{record.n_item}</div>
-                        <div className="information-1">วันที่ลง :{record.Timestamp}</div>
-                        <Link className="CardTitle">อ่านเพิ่มเติม</Link>
+                        <div className="information">ต้องการรับบริจาค : {record.item}</div>
+                        <div className="information">จำนวน : {record.n_item} บาท</div>
+                        {/* <div className="information">ที่อยู่ : {record.address}</div> */}
+                     <div className="information">เบอร์โทรศัพท์ : {record.phone} </div>
+                        {/* <div className="information-1">วันที่ลง : {moment(record.Timestamp).calendar()}</div>  */}
+                        <Link  className="CardTitle">อ่านเพิ่มเติม</Link>
+                        {/* <Link to={"/Foundation/" + props.currentId.match.params.name + "/" + record._id} className="CardTitle">อ่านเพิ่มเติม</Link> */}
                       </Card.Body>
                     </Card>
                   </div>
@@ -246,95 +248,95 @@ export default function Checkboxes() {
           </center>
 
           <div className="row m-0">
-          {
-            postTPJ.map((record, index) => {
-              return (
-              
-               
-                <div className="column col-4">
-                  <Card className="foundat2">
-                  <Card.Body>
-                  <center><Link className="Tfound1">{record.title}</Link></center>
-                  </Card.Body>
-                 
-                         <Grid container justify="center" >
-                                <SlideShow 
-                                images={record.image}
-                                width="400px"
-                                imagesWidth="300px"
-                                imagesHeight="200px"
-                                imagesHeightMobile="36vw"
-                                thumbnailsWidth="520px"
-                                thumbnailsHeight="12vw"
-                                // className={classes.picture}
-                                indicators  fixedImagesHeight
-                                className="img101"
-                              />
-                            </Grid>
-                    <Card.Body>
-                      {/* <Link className="Tfound">{record.title}</Link> */}
-                      <div className="information">จังหวัด :{record.location}</div>
-                      <div className="information">ผู้สร้าง :{record.creator}</div>
-                      <div className="information-1">วันที่ลง :{record.Timestamp}</div>
-                      <div className="pum">
-                      <If condition={currentUser == record.creator}>
-                      <Then>
-                        <button
-                          variant="contained"
-                          // color="primary"
-                          size="small"
-                          className="want" // จำเป็น
-                        >
-                          แก้ไข
+            {
+              postTPJ.map((record, index) => {
+                return (
+
+
+                  <div className="column col-4">
+                    <Card className="foundat2">
+                      <Card.Body>
+                        <center><Link className="Tfound1">{record.title}</Link></center>
+                      </Card.Body>
+
+                      <Grid container justify="center" >
+                        <SlideShow
+                          images={record.image}
+                          width="400px"
+                          imagesWidth="300px"
+                          imagesHeight="200px"
+                          imagesHeightMobile="36vw"
+                          thumbnailsWidth="520px"
+                          thumbnailsHeight="12vw"
+                          // className={classes.picture}
+                          indicators fixedImagesHeight
+                          className="img101"
+                        />
+                      </Grid>
+                      <Card.Body>
+                        {/* <Link className="Tfound">{record.title}</Link> */}
+                        <div className="information">จังหวัด :{record.location}</div>
+                        <div className="information">ผู้สร้าง :{record.creator}</div>
+                        <div className="information-1">วันที่ลง :{record.Timestamp}</div>
+                        <div className="pum">
+                          <If condition={currentUser == record.creator}>
+                            <Then>
+                              <button
+                                variant="contained"
+                                // color="primary"
+                                size="small"
+                                className="want" // จำเป็น
+                              >
+                                แก้ไข
                         </button>
 
-                        <button
-                          variant="contained"
-                          // color="secondary"
-                          size="small"
-                          className="fav"
-                        >
-                          ลบ
+                              <button
+                                variant="contained"
+                                // color="secondary"
+                                size="small"
+                                className="fav"
+                              >
+                                ลบ
                        </button>
-                       </Then>
+                            </Then>
 
-                       <ElseIf condition={currentUser == "admin"}>
-                        <button
-                          variant="contained"
-                          // color="secondary"
-                          size="small"
-                          className="fav"
-                        >
-                          ลบ
+                            <ElseIf condition={currentUser == "admin"}>
+                              <button
+                                variant="contained"
+                                // color="secondary"
+                                size="small"
+                                className="fav"
+                              >
+                                ลบ
                        </button>
-                       </ElseIf>
+                            </ElseIf>
 
-                       <Else condition={currentUser == "admin"}>
-                       <button
-                          variant="contained"
-                          // color="primary"
-                          size="small"
-                          className="want" // จำเป็น
-                        >
-                          ขอรับ
+                            <Else condition={currentUser == "admin"}>
+                              <button
+                                variant="contained"
+                                // color="primary"
+                                size="small"
+                                className="want" // จำเป็น
+                              >
+                                ขอรับ
                         </button>
 
-                        <button
-                          variant="contained"
-                          // color="secondary"
-                          size="small"
-                          className="fav"
-                        >
-                          ถูกใจ
+                              <button
+                                variant="contained"
+                                // color="secondary"
+                                size="small"
+                                className="fav"
+                              >
+                                ถูกใจ
                        </button>
-                       </Else>
-                       </If>
+                            </Else>
+                          </If>
 
-                      </div>
-                    </Card.Body>
-                  </Card>
+                        </div>
+                      </Card.Body>
+                    </Card>
 
-                </div>
+                  </div>
 
 
 
@@ -343,7 +345,7 @@ export default function Checkboxes() {
               })
 
             }
-       
+
 
           </div>
         </div>

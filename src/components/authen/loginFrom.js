@@ -76,7 +76,7 @@ function LoginFrom() {
                 <h3>เข้าสู่ระบบ</h3><br />
                 <form>
                     <div className="form-group1">
-                        <label>ชื่อผู้ใช้:</label><br />
+                        <label>ชื่อผู้ใช้</label><br />
                         <input
                             type="text"
                             placeholder="ชื่อผู้ใช้"
@@ -87,7 +87,7 @@ function LoginFrom() {
                         </input>
                     </div>
                     <div className="form-group1">
-                        <label>รหัสผ่าน:</label><br />
+                        <label>รหัสผ่าน</label><br />
                         <input
                             type="password"
                             placeholder="รหัสผ่าน"
@@ -97,10 +97,14 @@ function LoginFrom() {
                         >
                         </input>
                     </div>
-                    <div className="button-login"> <br/>
-                       <center>  
-            
-             <Link to="/register" >สมัครสมาชิก</Link> | <button type='submit' className="btn btn" onClick={uploadFile}>เข้าสู่ระบบ</button></center>
+                    <div className="button-login"> <br />
+                        <center>
+
+                            <button type='submit' className="btn btn" onClick={uploadFile}>เข้าสู่ระบบ</button>
+                            <br />
+                            <a>ยังไม่มีบัญชีผู้ใช้ ? </a>
+                            <Link to="/register" >สมัครสมาชิก</Link>
+                        </center>
                     </div>
                 </form>
                 {/* <div>
