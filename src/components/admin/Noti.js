@@ -92,7 +92,7 @@ function Noti(props) {
               {
                 post.map((record, index) => {
                   return (
-                    <div className="column  ">
+                    <div className="adminnn">
                       <Card className="foundat">
 
                         {/* <Card.Img
@@ -119,12 +119,12 @@ function Noti(props) {
                           <div className="information">ผู้สร้าง : {record.post.creator}</div>
                           <div className="information">จังหวัด : {record.post.location}</div>
                           <div className="information-1">วันที่ลง : {record.post.Timestamp}</div>
-                          <div className="pum">
+                          <div className="del">
                             <Button
                               variant="contained"
-                              color="primary"
+                     
                               size="small"
-                              className="want" // จำเป็น
+                              className="del" // จำเป็น
                               onClick={() => onDelete(record.post._id)}
                             >
                               ลบโพสต์

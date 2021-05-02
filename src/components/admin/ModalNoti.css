@@ -11,3 +11,64 @@
 .pd{
     overflow-y: auto;
 }
+
+
+
+.dropadmin .nav-links, .dropdown, .nav-links-mobile {
+    color: white;
+    text-decoration: none;
+    padding: 0rem 0rem;
+    
+}
+
+.dropadmin .btn-primary {
+    padding: 5px 15px;
+    font-size: 15px;
+
+    border-radius: 35px;
+    color: #fff;
+    background-color: #202224;
+    border-color: #f2f4f7;
+}
+
+.dropadmin .btn-primary:hover {
+    background-color: #4c4e50;
+    border-color: #f2f4f7;
+}
+.dropadmin .btn-primary:active {
+    background-color: #4c4e50;
+    border-color: #f2f4f7;
+}
+.dropadmin .dropdown-menu {
+
+    width: 150px;
+    padding: 15px
+}
+.dataadmin {
+    color: #7c580b;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    padding: 5px;
+
+}
+
+.del .btn {
+    color: rgb(255, 255, 255);
+    background-color: rgb(156, 25, 25);
+    padding: 9px 15px;
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 35px;
+}
+.del .btn:hover{
+    color: rgb(49, 45, 45);
+    background-color: rgb(185, 176, 176);
+
+}
+
+.adminnn .slide-show .ss-fixed-height .ss-slide-image>img {
+    width: 350px;
+    height: inherit;
+}
