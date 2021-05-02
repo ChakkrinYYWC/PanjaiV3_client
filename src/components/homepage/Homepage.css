@@ -318,7 +318,7 @@ text-align: center;
 padding-right: 1000px;
 } */
 .column .container {
-height: 300px;
+height: 230px;
 overflow: hidden;
 overflow-y: scroll;
 padding: 0px;
@@ -442,6 +442,7 @@ margin: 0 auto;
 margin-right:0px; 
  margin-left: 0px; 
 }
+
 /*responsive*/
 @media only screen and (max-width: 1024px) {
 .p {
