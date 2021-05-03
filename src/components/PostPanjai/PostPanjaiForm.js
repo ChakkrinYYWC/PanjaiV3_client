@@ -12,6 +12,7 @@ import Input from '@material-ui/core/Input';
 import Axios from 'axios'
 import './PostPanjai.css'
 import { data } from "jquery";
+import './PostPanjaiForm.css'
 
 const initialFieldValues = {
     title: '',
@@ -354,9 +355,14 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                         <div style={{ color: "rgb(117, 24, 12)", textAlign: "center" }}>{text}</div>
                         {/* แสดงเป็นตัวอักษรสีแดง */}
+                        <center>
+                        <span >
+                            <p className='photo-multi'>สามารถใส่ได้หลายรูป</p>
+                        </span></center>
 
                     </Grid>
 
+                        
 
                     <Grid item xs={12} sm={6}
                         container
