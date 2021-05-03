@@ -140,6 +140,150 @@
 }
 
 
+
+@media screen and (max-width: 1024px) {
+  .bg {
+    height: auto;
+    padding: 5px;
+  }
+  .bg1 {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  .text {
+    border: 20px;
+    padding-top: 80px;
+    line-height: 26pt;
+    font-size: 14px;
+  }
+  .topic {
+    color: rgb(151, 117, 49);
+    font-family: Mali;
+    border: 40px;
+    font-size: 20px;
+    padding-top: 80px;
+    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+  }
+  .pic {
+    width: 350px;
+    grid-column: 1 / 5;
+  }
+
+  .bg .grid-container {
+    display: grid;
+
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  .topic1 {
+    color: rgb(102, 70, 5);
+    font-family: Mali;
+    border: 40px;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+    display: block;
+    margin: auto;
+    padding: 20px;
+  }
+  .text1 {
+    font-family: Mali;
+    border: 20px;
+    color: rgb(88, 63, 12);
+    text-align: center;
+    line-height: 26pt;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .topic2 {
+    color: rgb(151, 117, 49);
+    font-family: Mali;
+    border: 40px;
+    font-size: 28px;
+    text-align: center;
+    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+    display: block;
+    margin: auto;
+    padding: 20px;
+  }
+  .pic1 {
+    width: 80px;
+    height: 80px;
+    border-radius: 60%;
+  }
+  .bg .grid-container1 > div {
+    text-align: center;
+  }
+  .bg .grid-container1 {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  .text2 {
+    font-family: Mali;
+    border: 20px;
+    color: rgb(68, 47, 5);
+    text-align: center;
+
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .topic3 {
+    color: rgb(80, 59, 18);
+    font-family: Mali;
+    border: 40px;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
+    display: block;
+    margin: auto;
+    padding: 20px;
+  }
+  .text3 {
+    font-family: Mali;
+    border: 20px;
+    color: rgb(190, 137, 30);
+    text-align: center;
+    line-height: 26pt;
+    display: block;
+    margin: auto;
+    font-size: 14px;
+  }
+
+  .email {
+    padding: 15px;
+  }
+  /* อิโมจิ */
+  .fa-map-marker-alt {
+    padding: 10px;
+    color: rgb(112, 87, 37);
+  }
+  .fa-phone-alt {
+    padding: 10px;
+    color: rgb(112, 87, 37);
+  }
+  .text3 .fa-envelope  {
+    padding: 10px;
+    color: rgb(112, 87, 37);
+  }
+  .fa-facebook {
+    padding: 10px;
+    color: rgb(112, 87, 37);
+  }
+  .facebook1 {
+    color: rgb(190, 137, 30);
+    text-decoration: none;
+  }
+  .facebook1:hover {
+    color: rgb(99, 71, 17);
+  }
+}
 @media screen and (max-width: 376px) {
   .bg {
     height: auto;
@@ -286,149 +430,6 @@
     color: rgb(99, 71, 17);
   }
   .call {
-    padding: 80px;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .bg {
-    height: auto;
-    padding: 5px;
-  }
-  .bg1 {
-    width: 90%;
-    height: auto;
-    display: block;
-    margin: auto;
-  }
-  .text {
-    border: 20px;
-    padding-top: 0px;
-    line-height: 26pt;
-    font-size: 14px;
-  }
-  .topic {
-    color: rgb(151, 117, 49);
-    font-family: Mali;
-    border: 40px;
-    font-size: 20px;
-    padding-top: 0px;
-    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
-  }
-  .pic {
-    width: 300px;
-    grid-column: 1 / 5;
-  }
-
-  .bg .grid-container {
-    display: grid;
-    grid-template-columns: auto auto ;
-    grid-gap: 10px;
-    padding: 10px;
-  }
-  .topic1 {
-    color: rgb(102, 70, 5);
-    font-family: Mali;
-    border: 40px;
-    font-size: 20px;
-    text-align: center;
-    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
-    display: block;
-    margin: auto;
-    padding: 20px;
-  }
-  .text1 {
-    font-family: Mali;
-    border: 20px;
-    color: rgb(88, 63, 12);
-    text-align: center;
-    line-height: 26pt;
-    display: block;
-    margin: auto;
-    margin-top: 20px;
-  }
-  .topic2 {
-    color: rgb(151, 117, 49);
-    font-family: Mali;
-    border: 40px;
-    font-size: 28px;
-    text-align: center;
-    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
-    display: block;
-    margin: auto;
-    padding: 20px;
-  }
-  .pic1 {
-    width: 80px;
-    height: 80px;
-    border-radius: 60%;
-  }
-  .bg .grid-container1 > div {
-    text-align: center;
-  }
-  .bg .grid-container1 {
-    display: grid;
-    grid-template-columns: auto auto auto ;
-    grid-gap: 10px;
-    padding: 10px;
-  }
-  .text2 {
-    font-family: Mali;
-    border: 20px;
-    color: rgb(68, 47, 5);
-    text-align: center;
-
-    display: block;
-    margin: auto;
-    margin-top: 15px;
-    font-size: 14px;
-  }
-  .topic3 {
-    color: rgb(80, 59, 18);
-    font-family: Mali;
-    border: 40px;
-    font-size: 20px;
-    text-align: center;
-    text-shadow: 0.1em 0.1em rgb(182, 173, 156);
-    display: block;
-    margin: auto;
-    padding: 20px;
-  }
-  .text3 {
-    font-family: Mali;
-    border: 20px;
-    color: rgb(190, 137, 30);
-    text-align: center;
-    line-height: 26pt;
-    display: block;
-    margin: auto;
-    font-size: 14px;
-  }
-
-  .email {
-    padding: 15px;
-  }
-  /* อิโมจิ */
-  .fa-map-marker-alt {
-    padding: 10px;
-    color: rgb(112, 87, 37);
-  }
-  .fa-phone-alt {
-    padding: 10px;
-    color: rgb(112, 87, 37);
-  }
-  .text3 .fa-envelope  {
-    padding: 10px;
-    color: rgb(112, 87, 37);
-  }
-  .fa-facebook {
-    padding: 10px;
-    color: rgb(112, 87, 37);
-  }
-  .facebook1 {
-    color: rgb(190, 137, 30);
-    text-decoration: none;
-  }
-  .facebook1:hover {
-    color: rgb(99, 71, 17);
+    padding: 85px;
   }
 }
