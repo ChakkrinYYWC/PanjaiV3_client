@@ -530,6 +530,7 @@ background-color: rgba(231, 222, 208, 0.925);
 height: auto;
 width: 100%;
 margin: 0;
+margin-bottom: 50px;
 font-family: "Mali", cursive;
 padding: 20px;
 }
