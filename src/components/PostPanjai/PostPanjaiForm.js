@@ -18,7 +18,6 @@ const initialFieldValues = {
     message: '',
     contect: '',
     location: '',
-    imageFile: null,
 }
 
 const styles = theme => ({
@@ -117,9 +116,15 @@ const PostPanjaiForm = ({ classes, ...props }) => {
     const [multi_image, setMulti_image] = useState([]);
     const [data, setdata] = useState([]);
     const [text, settext] = useState('')
+    const [url_file, seturl_file] = useState([]);
+
+    // const [{ alt, src }, setImg] = useState([{
+    //     src: undefined,
+    //     alt: 'Upload an Image'
+    // }]);
 
     useEffect(() => {
-        console.log(props.currentId)
+        //console.log(props.currentId)
 
         Axios.get('/Too-Panjai/', {
         }).then(async res => {
@@ -136,22 +141,23 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
     }, [props.currentId])
 
-    const validate = async () => {
-        //console.log(file.length)
+    const validate = () => {
+        console.log(file.length)
 
-        if (file.length == 0) {
-            await settext('กรุณาใส่รูป')
-        }
+        // if (file.length == 0) {
+        //     settext('กรุณาใส่รูป')
+        // }
 
         let temp = { ...errors }
         temp.title = values.title ? "" : "กรุณาใส่ข้อมูล."
         temp.message = values.message ? "" : "กรุณาใส่ข้อมูล."
         temp.contect = values.contect ? "" : "กรุณาใส่ข้อมูล."
         temp.location = values.location ? "" : "กรุณาใส่ข้อมูล."
-        //temp.image = text ? 'กรูราใส่รูป' : "กรุณาใส่ข้อมูล."
+        temp.image = file.length ? "" : "กรุณาใส่ข้อมูล."
         setErrors({
             ...temp
         })
+        console.log(temp)
         return Object.values(temp).every(x => x === "")
     }
 
@@ -169,54 +175,76 @@ const PostPanjaiForm = ({ classes, ...props }) => {
     } = useForm(initialFieldValues, props.setCurrentId)
 
     const setPhotos = e => {
+
         //console.log(e.target.files)
         setFile(e.target.files)
         settext('')
 
         if (e.target.files) {
+
+            // Array.from(e.target.files).map((file) => {
+            //     setImg({
+            //         src: URL.createObjectURL(file),
+            //         alt: file.name
+            //     });
+            // });
+
             const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
             //console.log("filesArray: ", filesArray);
+            //seturl_file({file : e.target.files,url : filesArray})
+            //setFile((prev) => prev.concat(e.target.files))
             setMulti_image((prevImages) => prevImages.concat(filesArray));
             Array.from(e.target.files).map(
                 (file) => URL.revokeObjectURL(file) // avoid memory leak
             );
         }
     }
+    console.log(multi_image)
 
+    const renderPhotos = (source) => {
 
-    const renderPhotos = (source, file) => {
-        // console.log('source: ', source);
-        var i = 0;
-        return (
-            <ImageWrapper>
-                {
-                    source.map((photo) => {
-                        return (
-                            <ImageBox>
-                                <Image src={photo} alt="" key={photo} className={classes.imgpreview} />
-                                <ButtonWrapper>
-                                    <IconButton color="#000000" onClick={() => onRemoveImg(photo)}>
-                                        {/* <IconButton color="#000000" onClick={() => onRemoveImg(photo, file[i])}> */}
-                                        <DeleteSweep />
-                                    </IconButton>
-                                </ButtonWrapper>
-                            </ImageBox>
-                        );
+        if (source.length != 0) {
+            return (
+                <ImageWrapper>
+                    {
+                        source.map((photo) => {
+                            return (
+                                <>
+                                    <ImageBox>
+                                        <Image src={photo} alt="" className={classes.imgpreview} />
+                                        {/* <ButtonWrapper>
+                                            <IconButton color="#000000" onClick={() => onRemoveImg(photo)}>
+                                                <DeleteSweep />
+                                            </IconButton>
+                                        </ButtonWrapper> */}
+                                    </ImageBox>
+                                </>
+                            );
 
-                        i = i + 1
-                    })
-                }
-            </ImageWrapper>)
+                        })
+                    }
+                    <Button>
+                        <IconButton color="#000000" onClick={() => onRemoveImg()}>
+                            <DeleteSweep />
+                        </IconButton>
+                    </Button>
+                    {/* <button type='button' onClick={() => onRemoveImg()}>Clear image</button> */}
+                </ImageWrapper>
+            )
+        }
 
     };
 
-    const onRemoveImg = (url) => {
-        // console.log(url)
+    const onRemoveImg = () => {
+        console.log('**')
+        setFile([])
+        setMulti_image([])
+
         // console.log(fileremove.name)
         // const filesArray = Array.from(file).filter(f_old => f_old.name !== fileremove.name);
         // //console.log(filesArray)
         // setFile(filesArray)
-        setMulti_image(multi_image.filter(url_old => url_old !== url))
+        //setMulti_image(multi_image.filter(url_old => url_old !== url))
     }
 
     //console.log(file)
@@ -234,8 +262,9 @@ const PostPanjaiForm = ({ classes, ...props }) => {
             resetForm()
             setMulti_image([])
             setFile([])
-            window.location.reload()
+            //window.location.reload()
         }
+
         console.log(validate())
         console.log(text)
         if (await validate() && text == '') {
@@ -254,6 +283,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                 formData.append('location', values.location);
                 formData.append('creator', currentUser);
 
+                //console.log('โพสได้จ้า')
                 Axios.post('/Too-Panjai/', formData, {
                 }).then(async res => {
                     onSuccess()
@@ -298,7 +328,9 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         <img src={src} alt={alt} className={classes.imgpreview} />
                     </div> */}
 
-                        {renderPhotos(multi_image, file)}
+                        {
+                            renderPhotos(multi_image)
+                        }
 
                         <input
                             accept="image/*"
@@ -412,7 +444,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         className={classes.postBtn}
 
                     >โพสต์</Button>
-                </form>
+                </form >
             )
         } else {
             return (
@@ -527,6 +559,3 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 }
 
 export default (withStyles(styles)(PostPanjaiForm));
-
-
-
