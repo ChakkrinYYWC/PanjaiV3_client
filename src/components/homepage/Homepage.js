@@ -175,7 +175,8 @@ function Homepage() {
         <center>
           <div className="row m-0">
             <div className="column col-6 col-lg-4">
-              <Card className="cardd">
+            <a classname="linkimg" href="/Foundation/เด็กและเยาวชน" >
+              <Card className="cardd"  >
                 <Card.Img variant="top" src="/pngegg.png" />
                 <Card.Body>
                   <Link to="/Foundation/เด็กและเยาวชน" className="CardTitle">
@@ -184,8 +185,10 @@ function Homepage() {
                   {/* <Card.Title Link to="/Too-panjai">เด็กและเยาวชน</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
             <div className="column col-6 col-lg-4">
+            <a classname="linkimg" href="/Foundation/ผู้สูงอายุ" >
               <Card className="cardd">
                 <Card.Img variant="top" src="/2.png" />
                 <Card.Body className="">
@@ -195,8 +198,10 @@ function Homepage() {
                   {/* <Card.Title>ผู้สูงอายุ</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
             <div className="column col-6 col-lg-4">
+            <a classname="linkimg" href="/Foundation/สัตว์" >
               <Card className="cardd">
                 <Card.Img variant="top" src="/e.png" />
                 <Card.Body>
@@ -206,10 +211,12 @@ function Homepage() {
                   {/* <Card.Title>สัตว์</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
 
 
             <div className="column col-6 col-lg-4">
+            <a classname="linkimg" href="/Foundation/ผู้พิการและผู้ป่วย" >
               <Card className="cardd">
                 <Card.Img variant="top" src="/4.png" />
                 <Card.Body>
@@ -222,8 +229,10 @@ function Homepage() {
                   {/* <Card.Title>ผู้พิการและผู้ป่วย</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
             <div className="column col-6 col-lg-4">
+            <a classname="linkimg" href="/Foundation/สิ่งแวดล้อม" >
               <Card className="cardd">
                 <Card.Img variant="top" src="/5.1.png" />
                 <Card.Body>
@@ -233,8 +242,10 @@ function Homepage() {
                   {/* <Card.Title>สิ่งแวดล้อม</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
             <div className="column col-6 col-lg-4">
+            <a classname="linkimg" href="/Foundation/อื่นๆ" >
               <Card className="cardd">
                 <Card.Img variant="top" src="/6.png" />
                 <Card.Body>
@@ -244,6 +255,7 @@ function Homepage() {
                   {/* <Card.Title>อื่นๆ</Card.Title> */}
                 </Card.Body>
               </Card>
+              </a>
             </div>
 
           </div>
@@ -277,8 +289,9 @@ function Homepage() {
         >
           <li className="title">
             <h2>
-              " รอยยิ้มแห่งความสุข<i className="far fa-smile-wink"></i> "
+              " รอยยิ้มแห่งความสุข <i className="far fa-smile-wink"></i> "
             </h2>
+            {/* <h4 className="clickme">click me</h4> */}
           </li>
           <li className="stack stack-1">
             <ul className="cards-down">
@@ -290,6 +303,9 @@ function Homepage() {
                   </center>
                 </div>
               </li>
+
+              <h4 className="clickme">click me</h4>
+   
               <li className="card card-3">
                 <img src="https://home4animals.org/wp-content/uploads/2018/01/img-06.jpg" />
                 <div className="content">

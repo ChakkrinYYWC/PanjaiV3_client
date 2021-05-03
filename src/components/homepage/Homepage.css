@@ -33,11 +33,17 @@ width: 170px;
 .cardd img {
 margin-inline: 10px;
 }
+.clickme {
+  padding-left: 250px;
+padding-top: 100px;
 
+}
 .CardTitle {
-color: rgba(110, 76, 26, 0.925);
-font-size: 18px;
+  font-size: 18px;
+
 text-decoration-line: none;
+color: rgba(99, 51, 5, 0.925);
+
 }
 
 .CardTitle:hover {
@@ -442,7 +448,14 @@ margin: 0 auto;
 margin-right:0px; 
  margin-left: 0px; 
 }
+.clickme {
+  padding-left: 290px;
+  padding-top: 130px;
+  color: #e0a932;
+  font-family: fantasy;
 
+    
+}
 /*responsive*/
 @media only screen and (max-width: 1024px) {
 .p {
@@ -553,6 +566,10 @@ left: 450px;
 }
 ul.card-stacks.transition li.stack.stack-3 {
 left: 205px;
+}
+.clickme {
+  padding-left: 250px;
+  padding-top: 100px;
 }
 }
 
@@ -781,5 +798,8 @@ color: rgb(32, 17, 6);
 ul.card-stacks li.stack ul.cards-down li.card div.content {
 padding: 0px 0px;
 }
-
+.clickme {
+  padding-left: 0px;
+  padding-top: 120px;
+}
 }    
