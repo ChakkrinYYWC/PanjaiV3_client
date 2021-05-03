@@ -366,7 +366,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                     >
                         <TextField
                             // style={{backgroundColor:'white', marginBottom:'1rem', marginTop:'1rem'}}
-                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', } }}
                             name="title"
                             label="ชื่อสิ่งของ"
                             size="small"
@@ -388,7 +388,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         <TextField
                             name="message"
 
-                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0',  } }}
                             label="ข้อมูลสิ่งของ"
                             fullWidth
                             size="small"
@@ -409,7 +409,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                             type='number'
                             name="contect"
 
-                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                            InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0' } }}
                             label="เบอร์โทรศัพท์"
                             fullWidth
                             size="small"
@@ -429,7 +429,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                         <FormControl fullWidth className={classes.select}>
                             <InputLabel >จังหวัด</InputLabel>
                             <Select
-                                InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                                InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0' } }}
                                 name='location'
                                 value={values.location}
                                 fullWidth
@@ -471,7 +471,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                 >
                     <TextField
                         // style={{backgroundColor:'white', marginBottom:'1rem', marginTop:'1rem'}}
-                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0' } }}
                         name="title"
 
                         label="ชื่อสิ่งของ"
@@ -493,7 +493,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                     <TextField
                         name="message"
 
-                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0' } }}
                         label="ข้อมูล"
                         fullWidth
 
@@ -512,7 +512,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
                     <TextField
                         name="contect"
 
-                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0', fontFamily: 'mali', height: '40px' } }}
+                        InputProps={{ style: { border: '3px', margin: '1rem 0 1rem 0',  } }}
                         label="เบอร์โทรศัพท์"
                         fullWidth
                         value={values.contect}
