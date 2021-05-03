@@ -139,7 +139,7 @@ const PostPanjai = ({ classes, ...props }) => {
       await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
     }).catch(error => console.log(error))
 
-    getFav_uer()
+   // getFav_uer()
 
     window.scrollTo({
       top: 0,
@@ -148,16 +148,16 @@ const PostPanjai = ({ classes, ...props }) => {
     });
   }, [])
 
-  const getFav_uer = () => {
+  // const getFav_uer = () => {
 
-    Axios.post("/profile/favorite/" + user_id, {})
-      .then((res) => {
-        console.log(res.data);
-        setfav_user(res.data);
-      })
-      .catch((error) => console.log(error));
+  //   Axios.post("/profile/favorite/" + user_id, {})
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setfav_user(res.data);
+  //     })
+  //     .catch((error) => console.log(error));
 
-  }
+  // }
 
   const onDelete = id => {
 
@@ -231,7 +231,7 @@ const PostPanjai = ({ classes, ...props }) => {
     } else {
       window.alert("Please login.")
     }
-    
+
   };
 
   const reportItem = async (post_id) => {
