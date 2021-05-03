@@ -4,6 +4,13 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Card } from "react-bootstrap";
 import Axios from 'axios';
 import { If, Then, ElseIf, Else } from 'react-if-elseif-else-render';
+import ButterToast, { Cinnamon } from "butter-toast";
+import {
+  DeleteSweep,
+  AccessAlarm,
+  ThreeDRotation,
+  AssignmentTurnedIn,
+} from "@material-ui/icons";
 
 import moment from 'moment';
 import {
@@ -133,8 +140,70 @@ export default function Checkboxes({ ...props }) {
   });
 
   const currentUser = localStorage.getItem("currentUser");
-  // console.log(postTPJ)
-  console.log(postFDT)
+  const currentUser_id = localStorage.getItem('currentUser_id')
+
+  const requestItem = async (id) => {
+    if (currentUser != "null") {
+      const data = { currentUser_id, currentUser };
+      if (window.confirm("Do you want to request?")) {
+        await Axios.post("/Too-Panjai/addRequest/" + id, data, {})
+          .then((res) => {
+            if (res) {
+              window.alert(res.data)
+            }
+          })
+          .catch((error) => console.log(error));
+      }
+    } else {
+      window.alert("Please login.")
+    }
+  };
+
+  const onSuccessFav = () => {
+    ButterToast.raise({
+      content: <Cinnamon.Crisp title="ตู้ปันใจ"
+        content="คุณได้ถูกใจโพสต์นี้"
+        scheme={Cinnamon.Crisp.SCHEME_PURPLE}
+        icon={<AssignmentTurnedIn />}
+      />
+    })
+    //window.location.reload()
+  }
+
+  const onDelete = id => {
+
+    if (window.confirm('ต้องการลบโพสนี้ใช่หรือไม่?')) {
+      Axios.delete('/Too-Panjai/' + id, {
+      }).then(async res => {
+        onSuccess()
+      }).catch(error => console.log(error))
+    }
+
+    const onSuccess = () => {
+      ButterToast.raise({
+        content: <Cinnamon.Crisp title="ตู้ปันใจ"
+          content="ลบโพสต์เสร็จสมบูรณ์"
+          scheme={Cinnamon.Crisp.SCHEME_PURPLE}
+          icon={<DeleteSweep />}
+        />
+      })
+      window.location.reload()
+    }
+  }
+
+  const favoriteItem = async (id) => {
+    if (currentUser != "null") {
+      const data = { currentUser_id, currentUser };
+      await Axios.post("/Too-Panjai/addFav/" + id, data, {})
+        .then((res) => {
+          console.log(res);
+          onSuccessFav()
+        })
+        .catch((error) => console.log(error));
+    } else {
+      window.alert("Please login.")
+    }
+  };
 
   return (
     <div className='doublebg' >
@@ -203,13 +272,13 @@ export default function Checkboxes({ ...props }) {
                     <Card className="foundat">
                       <Card.Img variant="top" src={record.image[0]} />
                       <Card.Body>
-                        <Link className="Tfound1">{record.title}</Link>
+                        <Link to={"/Foundation/" + record.name + "/" + record._id} className="Tfound1">{record.title}</Link>
                         <div className="information">ต้องการรับบริจาค : {record.item}</div>
                         <div className="information">จำนวน : {record.n_item} บาท</div>
                         {/* <div className="information">ที่อยู่ : {record.address}</div> */}
-                     <div className="information">เบอร์โทรศัพท์ : {record.phone} </div>
+                        <div className="information">เบอร์โทรศัพท์ : {record.phone} </div>
                         {/* <div className="information-1">วันที่ลง : {moment(record.Timestamp).calendar()}</div>  */}
-                        <Link  className="CardTitle">อ่านเพิ่มเติม</Link>
+                        <Link to={"/Foundation/" + record.name + "/" + record._id} className="CardTitle">อ่านเพิ่มเติม</Link>
                         {/* <Link to={"/Foundation/" + props.currentId.match.params.name + "/" + record._id} className="CardTitle">อ่านเพิ่มเติม</Link> */}
                       </Card.Body>
                     </Card>
@@ -284,18 +353,10 @@ export default function Checkboxes({ ...props }) {
                             <Then>
                               <button
                                 variant="contained"
-                                // color="primary"
-                                size="small"
-                                className="want" // จำเป็น
-                              >
-                                แก้ไข
-                        </button>
-
-                              <button
-                                variant="contained"
                                 // color="secondary"
                                 size="small"
                                 className="fav"
+                                onClick={() => onDelete(record._id)}
                               >
                                 ลบ
                        </button>
@@ -307,6 +368,7 @@ export default function Checkboxes({ ...props }) {
                                 // color="secondary"
                                 size="small"
                                 className="fav"
+                                onClick={() => onDelete(record._id)}
                               >
                                 ลบ
                        </button>
@@ -318,6 +380,7 @@ export default function Checkboxes({ ...props }) {
                                 // color="primary"
                                 size="small"
                                 className="want" // จำเป็น
+                                onClick={() => requestItem(record._id)}
                               >
                                 ขอรับ
                         </button>
@@ -327,6 +390,7 @@ export default function Checkboxes({ ...props }) {
                                 // color="secondary"
                                 size="small"
                                 className="fav"
+                                onClick={() => favoriteItem(record._id)}
                               >
                                 ถูกใจ
                        </button>

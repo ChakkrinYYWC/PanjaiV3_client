@@ -90,7 +90,11 @@ function Categoryshow({ classes, ...props }) {
 
 
     const handleClickOpen = () => {
-        setOpen(true);
+        if(currentUser != "null"){
+            setOpen(true);
+        }else{
+            window.location.href = "/Login"
+        }
     };
 
     const handleClose = () => {

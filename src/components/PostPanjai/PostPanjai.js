@@ -175,48 +175,60 @@ const PostPanjai = ({ classes, ...props }) => {
   }
 
 
-  const requestItem = (id) => {
-    const data = { currentUser_id, currentUser };
-    if (window.confirm("Do you want to request?")) {
-      Axios.post("/Too-Panjai/addRequest/" + id, data, {})
-        .then((res) => {
-          if (res) {
-            window.alert(res.data)
-          }
-        })
-        .catch((error) => console.log(error));
+  const requestItem = async (id) => {
+    if (currentUser != "null") {
+      const data = { currentUser_id, currentUser };
+      if (window.confirm("Do you want to request?")) {
+        await Axios.post("/Too-Panjai/addRequest/" + id, data, {})
+          .then((res) => {
+            if (res) {
+              window.alert(res.data)
+            }
+          })
+          .catch((error) => console.log(error));
+      }
+    }else{
+      window.alert("Please login.")
     }
   };
+
   const onSuccessFav = () => {
     ButterToast.raise({
       content: <Cinnamon.Crisp title="ตู้ปันใจ"
         content="คุณได้ถูกใจโพสต์นี้"
         scheme={Cinnamon.Crisp.SCHEME_PURPLE}
-        icon={<AssignmentTurnedIn />} 
+        icon={<AssignmentTurnedIn />}
       />
     })
     //window.location.reload()
   }
 
-  const favoriteItem = (id) => {
-    const data = { currentUser_id, currentUser };
-    Axios.post("/Too-Panjai/addFav/" + id, data, {})
-      .then((res) => {
-        console.log(res);
-        onSuccessFav()
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const reportItem = (post_id) => {
-    console.log(post_id)
-    if (window.confirm("รายงานโพสนี้ใช่หรือไม่?")) {
-      const data = { post_id, currentUser, currentUser_id };
-      Axios.post("/report/" + post_id, data, {})
+  const favoriteItem = async (id) => {
+    if (currentUser != "null") {
+      const data = { currentUser_id, currentUser };
+      await Axios.post("/Too-Panjai/addFav/" + id, data, {})
         .then((res) => {
           console.log(res);
+          onSuccessFav()
         })
         .catch((error) => console.log(error));
+    } else {
+      window.alert("Please login.")
+    }
+  };
+
+  const reportItem = async (post_id) => {
+    if (currentUser != "null") {
+      if (window.confirm("รายงานโพสนี้ใช่หรือไม่?")) {
+        const data = { post_id, currentUser, currentUser_id };
+        await Axios.post("/report/" + post_id, data, {})
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => console.log(error));
+      }
+    } else {
+      window.alert("Please login.")
     }
   };
 

@@ -114,7 +114,7 @@ function Notification({ open, t }) {
                                         <div className="grid">
                                             <div className="NameKamko">{record.owner} ได้ยอมรับคำขอ ({record.item}) ของคุณแล้ว<br />โปรดติดต่อ : {record.owner_contact}</div>
                                             
-                                        <button  eonClick={() => deleteRecieve(record)}>ลบ</button>
+                                        <button onClick={() => deleteRecieve(record)}>ลบ</button>
                                         </div>
                                     )
                                 })
