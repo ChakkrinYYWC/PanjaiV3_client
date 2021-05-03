@@ -177,7 +177,8 @@ const PostPanjaiForm = ({ classes, ...props }) => {
     const setPhotos = e => {
 
         //console.log(e.target.files)
-        setFile(e.target.files)
+        //setFile(e.target.files)
+        setFile((prev) => prev.concat(e.target.files))
         settext('')
 
         if (e.target.files) {
@@ -192,14 +193,13 @@ const PostPanjaiForm = ({ classes, ...props }) => {
             const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
             //console.log("filesArray: ", filesArray);
             //seturl_file({file : e.target.files,url : filesArray})
-            //setFile((prev) => prev.concat(e.target.files))
             setMulti_image((prevImages) => prevImages.concat(filesArray));
             Array.from(e.target.files).map(
                 (file) => URL.revokeObjectURL(file) // avoid memory leak
             );
         }
     }
-    console.log(multi_image)
+    //console.log(file)
 
     const renderPhotos = (source) => {
 
@@ -247,8 +247,6 @@ const PostPanjaiForm = ({ classes, ...props }) => {
         //setMulti_image(multi_image.filter(url_old => url_old !== url))
     }
 
-    //console.log(file)
-
     const handleSubmit = async e => {
         e.preventDefault()
         const onSuccess = () => {
@@ -273,8 +271,14 @@ const PostPanjaiForm = ({ classes, ...props }) => {
 
                 const formData = new FormData();
 
+                //console.log(file.length)
+                //console.log(file[0][0])
+
                 for (let i = 0; i < file.length; i++) {
-                    formData.append('image', file[i]);
+                    for (let j = 0; j < file[i].length; j++) {
+                        ///console.log(file[i][j])
+                        formData.append('image', file[i][j]);
+                    }
                 }
 
                 formData.append('title', values.title);
