@@ -369,7 +369,7 @@ function Profile({ classes, ...props }) {
                                         </div> */}
                                             <div className='Like'>
                                                 <button className="button1" type="button" onClick={() => { route.push('/myfav') }}  >
-                                                    โพสที่ถูกใจ
+                                                    โพสที่บันทึก
                                                 </button>
                                             </div>
 

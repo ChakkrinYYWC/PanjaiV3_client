@@ -206,7 +206,7 @@ function Myfav({ classes }) {
                             className={`${classes.smMargin1} ${classes.frontpost}`}
                             onClick={() => unfavoriteItem(record._id)}
                           >
-                            เลิกถูกใจ
+                            เลิกบันทึก
                           </Button>
                         </div>
                       </Grid>
