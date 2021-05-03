@@ -1,16 +1,37 @@
 import React, { Component, useEffect, useState } from "react";
 import "./tutorial.css";
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 class tutorial extends Component {
   render() {
     return (
+
+      
       <div className="bg-tutorial">
         <div className="bg-tutorial1">
+        
+          
         <div className="topic-tutorial">
             <p>วิธีใช้เว็บบริจาคปันใจ</p>
           </div>
+
+          <center>
+                                <div className="btcate">
+
+                                    <ButtonGroup variant="text" aria-label="text primary button group">
+                                        <Button href="#tutorial-1"><u>บริจาคเงินให้กับมูลนิธิ</u></Button>
+                                        <Button href="#tutorial-2"><u>บริจาคสิ่งของและเงินให้กับมูลนิธิ</u></Button>
+                                        <Button href="#tutorial-3"><u>เติมเงินเพื่อบริจาค</u></Button>
+                                        <Button href="#tutorial-4"><u>บริจาคสิ่งของและรับของบริจาคผ่านตู้ปันใจ</u></Button>
+                                        
+                                    </ButtonGroup>
+                                </div>
+
+                            </center>
+                            <br/>
           
-          <div className="topic-tutorial-1">
+          <div className="topic-tutorial-1" id="tutorial-1">
             <p>1. วิธีการบริจาคเงินให้กับมูลนิธิต่าง ๆ </p>
           </div>
           <div class="grid-container-tutorial">
@@ -45,7 +66,7 @@ class tutorial extends Component {
           </div>
 
           {/* บริจาคสิ่งของมูลนิธิ */}
-          <div className="topic-tutorial-1">
+          <div className="topic-tutorial-1" id="tutorial-2">
             <p>2. วิธีการบริจาคสิ่งของและเงินให้กับมูลนิธิต่าง ๆ </p>
           </div>
           <div class="grid-container-tutorial">
@@ -78,7 +99,7 @@ class tutorial extends Component {
             </div>
             </div>
 {/* เติมเงิน */}
-            <div className="topic-tutorial-1">
+            <div className="topic-tutorial-1" id="tutorial-3">
             <p>3. วิธีการเติมเงินเพื่อบริจาค </p>
           </div>
           <div class="grid-container-tutorial">
@@ -103,7 +124,7 @@ class tutorial extends Component {
             
         </div>
          {/* ตู้ปันใจ */}
-         <div className="topic-tutorial-1">
+         <div className="topic-tutorial-1" id="tutorial-4">
             <p>4. วิธีการบริจาคสิ่งของและรับของบริจาคผ่านตู้ปันใจ </p>
           </div>
           <div class="grid-container-tutorial">

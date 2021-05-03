@@ -26,13 +26,13 @@
     width: 250px;
     
   }
-  .pic-tutorial:hover {
+  /* .pic-tutorial:hover {
     
-    transform: scale(3);
+    transform: scale(2);
     cursor: pointer;
     position: absolute;
     
-  }
+  } */
   /* วิธีใช้ */
   .topic-tutorial p {
     color: rgb(109, 84, 34);
@@ -51,8 +51,11 @@
     border: 40px;
   font-size: 20px;
   padding-left: 50px;
+
  
   }
+
+ 
   @media screen and (max-width: 1024px) {
     .bg-tutorial {
       height: auto;
@@ -106,6 +109,7 @@
     font-size: 13px;
     padding-left: 50px;
   }
+  
 }
 
 
