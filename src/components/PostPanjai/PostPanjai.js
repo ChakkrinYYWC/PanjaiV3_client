@@ -125,7 +125,9 @@ const PostPanjai = ({ classes, ...props }) => {
 
   const [currentId, setCurrentId] = useState(0)
   const [data, setdata] = useState([])
+  const user_id = localStorage.getItem('currentUser_id');
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [fav_user, setfav_user] = useState([])
   const open = Boolean(anchorEl);
   var Array_image = [];
 
@@ -137,12 +139,25 @@ const PostPanjai = ({ classes, ...props }) => {
       await setdata(res.data.sort((a, b) => (a._id > b._id ? -1 : 1))) //sortdata
     }).catch(error => console.log(error))
 
+   // getFav_uer()
+
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth"
     });
   }, [])
+
+  // const getFav_uer = () => {
+
+  //   Axios.post("/profile/favorite/" + user_id, {})
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setfav_user(res.data);
+  //     })
+  //     .catch((error) => console.log(error));
+
+  // }
 
   const onDelete = id => {
 
@@ -205,6 +220,7 @@ const PostPanjai = ({ classes, ...props }) => {
   }
 
   const favoriteItem = async (id) => {
+
     if (currentUser != "null") {
       const data = { currentUser_id, currentUser };
       await Axios.post("/Too-Panjai/addFav/" + id, data, {})
@@ -216,6 +232,7 @@ const PostPanjai = ({ classes, ...props }) => {
     } else {
       window.alert("Please login.")
     }
+
   };
 
   const reportItem = async (post_id) => {
@@ -321,6 +338,7 @@ const PostPanjai = ({ classes, ...props }) => {
                       </div>
                       <Grid container justify="center">
                         <div className={classes.botton1}>
+
                           <If condition={currentUser == record.creator}>
                             <Then>
                               <Button
@@ -365,6 +383,7 @@ const PostPanjai = ({ classes, ...props }) => {
                               >
                                 ขอรับ
                               </Button>
+
                               <Button
                                 variant="contained"
                                 color="secondary"
@@ -372,8 +391,9 @@ const PostPanjai = ({ classes, ...props }) => {
                                 className={`${classes.smMargin1} ${classes.frontpost}`}
                                 onClick={() => favoriteItem(record._id)}
                               >
-                                ถูกใจ
+                                บันทึก
                               </Button>
+
                             </Else>
                           </If>
                         </div>
