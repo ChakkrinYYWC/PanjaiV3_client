@@ -34,6 +34,8 @@ import {
   Button,
 } from "@material-ui/core";
 import SlideShow from "react-image-show";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 
 
@@ -62,6 +64,22 @@ export default function Checkboxes({ ...props }) {
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
+
+  const reportItem = async (post_id) => {
+    if (currentUser != "null") {
+      if (window.confirm("รายงานโพสนี้ใช่หรือไม่?")) {
+        const data = { post_id, currentUser, currentUser_id };
+        await Axios.post("/report/" + post_id, data, {})
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => console.log(error));
+      }
+    } else {
+      window.alert("Please login.")
+    }
+  };
+
 
 
   const styles = (theme) => ({
@@ -252,7 +270,7 @@ export default function Checkboxes({ ...props }) {
             inputProps={{ "aria-label": "checkbox with default color" }}
           /> */}
           <span className="check3" style={{ color: "black" }}>
-            <Link to="/testaroundme" align='right' >ใกล้ฉัน</Link>
+            <Link to="/testaroundme" align='right' >มูลนิธิใกล้ฉัน</Link>
           </span>
         </div>
 
@@ -326,6 +344,21 @@ export default function Checkboxes({ ...props }) {
                     <Card className="foundat2">
                       <Card.Body>
                         <div className="titletu">{record.title}</div >
+                        {/* <DropdownButton id="dropdown-item-button " title="" >
+                                <span className="reportpost"></span>
+                          <Dropdown.Item as="button">
+
+                                    <div className="reportpost-button1"
+                                      onClick={() =>
+                                        reportItem(record._id)
+                                        //console.log(record._id)
+
+                                      }
+                                    >
+                                      รายงานโพสต์
+                              </div>
+                          </Dropdown.Item>
+                          </DropdownButton> */}
                       </Card.Body>
 
                       <Grid container justify="center" >
@@ -351,6 +384,16 @@ export default function Checkboxes({ ...props }) {
                         <div className="pum">
                           <If condition={currentUser == record.creator}>
                             <Then>
+
+                            <button
+                                variant="contained"
+                                // color="primary"
+                                size="small"
+                                className="want" // จำเป็น
+                                onClick={() => requestItem(record._id)}
+                              >
+                                แก้ไข
+                            </button>
                               <button
                                 variant="contained"
                                 // color="secondary"
@@ -392,7 +435,7 @@ export default function Checkboxes({ ...props }) {
                                 className="fav"
                                 onClick={() => favoriteItem(record._id)}
                               >
-                                ถูกใจ
+                                บันทึก
                        </button>
                             </Else>
                           </If>
