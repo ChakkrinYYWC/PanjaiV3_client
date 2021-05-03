@@ -63,10 +63,11 @@ class PayForm extends Component {
     }
 
     createCreditCardCharge = async (email, name, amount, token, user_id, my_coin) => {
+        
         try {
             const res = await axios({
                 method: "POST",
-                url: "http://localhost:3001/pay-coin", //send to server
+                url: "/pay-coin/", //send to server
                 data: { email, name, amount, token, user_id, my_coin },
                 headers: {
                     "Content-Type": "application/json"

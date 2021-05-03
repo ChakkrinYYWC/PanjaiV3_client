@@ -153,7 +153,9 @@ const PostPanjaiForm = ({ classes, ...props }) => {
         temp.message = values.message ? "" : "กรุณาใส่ข้อมูล."
         temp.contect = values.contect ? "" : "กรุณาใส่ข้อมูล."
         temp.location = values.location ? "" : "กรุณาใส่ข้อมูล."
-        temp.image = file.length ? "" : "กรุณาใส่ข้อมูล."
+        if(props.currentId == 0){
+            temp.image = file.length ? "" : "กรุณาใส่ข้อมูล."
+        }
         setErrors({
             ...temp
         })
