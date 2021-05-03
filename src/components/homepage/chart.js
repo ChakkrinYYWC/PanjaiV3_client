@@ -65,7 +65,7 @@ export const Color = {
 };
 
 export const DonationChart = () => {
-  const [tabState, setTabState] = React.useState("data1");
+  const [tabState, setTabState] = React.useState("ยอดเงินบริจาคทั้งหมด");
   const handleTabOnChange = (event, value) => {
     setTabState(value);
   };

@@ -194,6 +194,7 @@ const PostPanjai = ({ classes, ...props }) => {
     if (currentUser != "null") {
       const data = { currentUser_id, currentUser };
       if (window.confirm("Do you want to request?")) {
+        onSuccessFav("คุณได้ขอรับโพสต์นี้")
         await Axios.post("/Too-Panjai/addRequest/" + id, data, {})
           .then((res) => {
             if (res) {
@@ -207,10 +208,10 @@ const PostPanjai = ({ classes, ...props }) => {
     }
   };
 
-  const onSuccessFav = () => {
+  const onSuccessFav = (text) => {
     ButterToast.raise({
       content: <Cinnamon.Crisp title="ตู้ปันใจ"
-        content="คุณได้ถูกใจโพสต์นี้"
+        content={text}
         scheme={Cinnamon.Crisp.SCHEME_PURPLE}
         icon={<AssignmentTurnedIn />}
       />
@@ -225,7 +226,7 @@ const PostPanjai = ({ classes, ...props }) => {
       await Axios.post("/Too-Panjai/addFav/" + id, data, {})
         .then((res) => {
           console.log(res);
-          onSuccessFav()
+          onSuccessFav("คุณได้ถูกใจโพสต์นี้")
         })
         .catch((error) => console.log(error));
     } else {
@@ -237,6 +238,7 @@ const PostPanjai = ({ classes, ...props }) => {
   const reportItem = async (post_id) => {
     if (currentUser != "null") {
       if (window.confirm("รายงานโพสนี้ใช่หรือไม่?")) {
+        onSuccessFav("คุณได้ส่งรายงานโพสต์นี้ให้แอดมินแล้ว")
         const data = { post_id, currentUser, currentUser_id };
         await Axios.post("/report/" + post_id, data, {})
           .then((res) => {
