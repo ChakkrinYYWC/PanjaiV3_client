@@ -140,7 +140,7 @@ class aboutus extends Component{
                  </div> */}
 
                  <div className='facebook'>
-                 <Link to="https://www.facebook.com/suangruthai.titipattananone/" className="facebook1" ><i className="fab fa-facebook"></i>Suangruthai Titipattananone  </Link>
+                 <span className="facebook1" ><i className="fab fa-facebook"></i>Suangruthai Titipattananone  </span>
                  </div>
 
                 </span>

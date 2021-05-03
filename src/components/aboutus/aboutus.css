@@ -51,7 +51,7 @@
 .text1 {
   font-family: Mali;
   border: 20px;
-  color: rgb(192, 134, 17);
+  color: rgb(88, 63, 12);
   text-align: center;
   line-height: 26pt;
   display: block;
@@ -137,9 +137,7 @@
   color: rgb(190, 137, 30);
   text-decoration: none;
 }
-.facebook1:hover {
-  color: rgb(99, 71, 17);
-}
+
 
 @media screen and (max-width: 376px) {
   .bg {
