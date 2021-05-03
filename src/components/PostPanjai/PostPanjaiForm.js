@@ -262,7 +262,7 @@ const PostPanjaiForm = ({ classes, ...props }) => {
             resetForm()
             setMulti_image([])
             setFile([])
-            //window.location.reload()
+            window.location.reload()
         }
 
         console.log(validate())
